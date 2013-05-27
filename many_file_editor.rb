@@ -6,10 +6,11 @@
 
 
 Shoes.app :title => "Many File Editor" do
-  stack do
+  flow do
     button "Get File" do
       filename = ask_open_file
-      edit_box File.read(filename)
+      @box = edit_box :width => '45%', :height => '90%'
+      @box.text = File.read(filename)
     end
   end
 end
