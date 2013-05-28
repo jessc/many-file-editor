@@ -6,7 +6,7 @@
 
 
 Shoes.app :title => "Many File Editor" do
-  stack :left => 10, :top => 10, :height => '95%' do
+  stack :margin => 10, :height => '95%' do
     para "Get the file with the file names."
     button "Get File" do
       filename = ask_open_file
