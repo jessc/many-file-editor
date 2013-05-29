@@ -14,7 +14,10 @@
 
 
 Shoes.app :title => "Many File Editor" do
-  flow :width => '100%', :height => '100%', :margin => 10 do
+  button("Hide Window") do
+    @window_slot.toggle
+  end
+  @window_slot = flow :width => '100%', :height => '100%', :margin => 10 do
     stack :width => '48%', :height => '100%' do
       para "Get the file with the file names."
       button "Get File" do
@@ -44,5 +47,7 @@ end
   - make sure Unicode works
   - next closes file, opens next
 - exit button closes app
+
+
 
 =end
