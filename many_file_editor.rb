@@ -37,17 +37,15 @@ end
 
 =begin
 
-- button to open text file, put in edit box
-  - select filenames inside to open later
-    - copy and paste them into another edit box on the right
-  - modify filenames according to rules
-- close main file
+- put list of near-filenames in edit box
+- have a line for a regex to be run on the near-filenames, with a run button
+- run regex on each line, which outputs to the edit box to the right
+- clear window
 - open each filename
   - edit box, previous/next/save buttons
   - make sure Unicode works
-  - next closes file, opens next
+  - previous/next closes file, opens previous/next
 - exit button closes app
-
 
 
 =end
