@@ -13,7 +13,13 @@
 =end
 
 Shoes.app :title => "Many File Editor" do
- flow :width => '100%', :height => '100%', :margin => 10 do
+  # url '/editing_window', :editing_window
+
+  # def editing_window
+  #   "placeholder"
+  # end
+
+  flow :width => '100%', :height => '100%', :margin => 10 do
     stack :width => '48%', :height => '100%' do
       para "Paste Near-Filenames Here"
       @near_filenames = edit_box.text
@@ -30,6 +36,7 @@ Shoes.app :title => "Many File Editor" do
       @filenames_list = edit_box.text
       button "Open Files" do
       end
+      # para link("Editing Window", :click => "/editing_window")
     end
   end
 end
