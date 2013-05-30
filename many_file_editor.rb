@@ -16,8 +16,12 @@ Shoes.app :title => "Many File Editor" do
  flow :width => '100%', :height => '100%', :margin => 10 do
     stack :width => '48%', :height => '100%' do
       para "Paste Near-Filenames Here"
-      @near_filenames = edit_box
-    end
+      @near_filenames = edit_box.text
+      para "Folder Location"
+      @folder_location = edit_line.text
+      # glob the list of files at folder_location
+      # later open the files that match the regex
+     end
     stack :width => '48%', :height => '100%' do
       para "placeholder"
       para "placeholder"
