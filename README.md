@@ -31,6 +31,14 @@ Edit the file, then click "Save" then "Next File" or "Previous File", depending 
 
 Click "Exit" when you are done.
 
+Main Window:
+
+![main_window](./main_window.png?raw=true)
+
+Editing Window:
+
+![editing_window](./editing_window.png?raw=true)
+
 ## Contributing
 
  - add features
