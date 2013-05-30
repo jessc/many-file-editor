@@ -23,7 +23,7 @@ Open the Shoes app then open many_file_editor.rb.
 
 Paste in the text of the near-filenames.
 
-Add a Regex to change the near-filenames to proper filenames. Click "Apply Regex".
+Add a Regex to change the near-filenames to proper filenames. Click "Apply Regex". This will show the new filenames in the edit box to the right.
 
 Click 'Open Files'. The window will change to a big edit box with each file.
 

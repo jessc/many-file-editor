@@ -38,8 +38,8 @@ end
 =begin
 
 - put list of near-filenames in edit box
-- have a line for a regex to be run on the near-filenames, with a run button
-- run regex on each line, which outputs to the edit box to the right
+- have a line for a regex to be run on the near-filenames, with an apply button
+- apply regex on each line, which outputs to the edit box to the right
 - clear window
 - open each filename
   - edit box, previous/next/save buttons
