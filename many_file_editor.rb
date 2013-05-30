@@ -12,27 +12,40 @@
 # TODO:
 =end
 
-
 Shoes.app :title => "Many File Editor" do
-  button("Hide Window") do
-    @window_slot.toggle
-  end
-  @window_slot = flow :width => '100%', :height => '100%', :margin => 10 do
+ flow :width => '100%', :height => '100%', :margin => 10 do
     stack :width => '48%', :height => '100%' do
-      para "Get the file with the file names."
-      button "Get File" do
-        filename = ask_open_file
-        @left_box.text = File.read(filename)
-      end
-      @left_box = edit_box :width => '95%', :height => '85%'
+      para "Paste Near-Filenames Here"
+      @near_filenames = edit_box
     end
     stack :width => '48%', :height => '100%' do
-      para "Move list of file names here."
-      button "Next Step"
-      @right_box = edit_box :width => '95%', :height => '85%'
+      para "placeholder"
+      para "placeholder"
+      para "placeholder"
     end
   end
 end
+
+# Shoes.app :title => "Many File Editor" do
+#   button("Hide Window") do
+#     @window_slot.toggle
+#   end
+#   @window_slot = flow :width => '100%', :height => '100%', :margin => 10 do
+#     stack :width => '48%', :height => '100%' do
+#       para "Get the file with the file names."
+#       button "Get File" do
+#         filename = ask_open_file
+#         @left_box.text = File.read(filename)
+#       end
+#       @left_box = edit_box :width => '95%', :height => '85%'
+#     end
+#     stack :width => '48%', :height => '100%' do
+#       para "Move list of file names here."
+#       button "Next Step"
+#       @right_box = edit_box :width => '95%', :height => '85%'
+#     end
+#   end
+# end
 
 
 =begin
