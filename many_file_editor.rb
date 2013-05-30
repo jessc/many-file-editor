@@ -23,9 +23,13 @@ Shoes.app :title => "Many File Editor" do
       # later open the files that match the regex
      end
     stack :width => '48%', :height => '100%' do
-      para "placeholder"
-      para "placeholder"
-      para "placeholder"
+      para "Place Regex Here"
+      @regex = edit_line.text
+      button "Apply Regex" do
+      end
+      @filenames_list = edit_box.text
+      button "Open Files" do
+      end
     end
   end
 end
