@@ -9,35 +9,55 @@
 # TODO:
 =end
 
-Shoes.app :title => "Many File Editor" do
-  # url '/editing_window', :editing_window
-
-  # def editing_window
-  #   "placeholder"
-  # end
-
-  flow :width => '100%', :height => '100%', :margin => 10 do
-    stack :width => '48%', :height => '100%' do
-      para "Paste Near-Filenames Here"
-      @near_filenames = edit_box.text
-      para "Folder Location"
-      @folder_location = edit_line.text
-      # glob the list of files at folder_location
-      # later open the files that match the regex
-     end
-    stack :width => '48%', :height => '100%' do
-      para "Place Regex Here"
-      @regex = edit_line.text
-      button "Apply Regex" do
+# For some inexplicable reason Shoes::Shape works while just '< Shoes' doesn't
+class ManyFileEditor < Shoes::Shape
+  def initialize(blah)
+    blah.app do
+      blah.append do
+        para "test1"
       end
-      @filenames_list = edit_box.text
-      button "Open Files" do
-      end
-      # para link("Editing Window", :click => "/editing_window")
     end
   end
 end
 
+Shoes.app :title => "Many File Editor" do
+  @many_file_editor = ManyFileEditor.new(self)
+end
+
+
+# placeholder stuff:
+    # main_window(flow)
+    # flow.app :width => '100%', :height => '100%', :margin => 10 do
+    #   stack.app :width => '48%', :height => '100%' do
+    #     para.app "Paste Near-Filenames Here"
+    #     @near_filenames = edit_box.text
+    #     para.app "Folder Location"
+    #     @folder_location = edit_line.text
+    #     # glob the list of files at folder_location
+    #     # later open the files that match the regex
+    #    end
+    #   stack.app :width => '48%', :height => '100%' do
+    #     para.app "Place Regex Here"
+    #     @regex = edit_line.text
+    #     button.app "Apply Regex" do
+    #     end
+    #     @filenames_list = edit_box.text
+    #     button.app "Open Files" do
+    #     end
+    #     # para link("Editing Window", :click => "/editing_window")
+    #   end
+    # end
+  # end
+
+  # def main_window
+  # end
+
+  # def editing_window
+  #   para "placeholder"
+  # end
+# end
+
+# placeholder stuff:
 # Shoes.app :title => "Many File Editor" do
 #   button("Hide Window") do
 #     @window_slot.toggle
