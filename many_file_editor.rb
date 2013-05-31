@@ -6,9 +6,6 @@
 
 =begin
 # Bug List:
-
-- why isn't copy/paste working from one edit box to another?
-
 # TODO:
 =end
 
