@@ -3,6 +3,9 @@
 # 2013-06
 # Jesse Cummins
 # https://github.com/jessc
+# With Shoes inspiration from Dan Garland:
+# https://github.com/dmgarland/TrafficLight
+
 
 =begin
 # Bug List:
