@@ -15,9 +15,9 @@
 # For some inexplicable reason '< Shoes::Shape' works while 
 # '< Shoes' crashes after a few seconds
 class ManyFileEditor < Shoes::Shape
-  def main_window(blah)
-    @main_window = blah.app do
-      blah.append do
+  def main_window(foobar)
+    @main_window = foobar.app do
+      foobar.append do
         para "main_window"
         button "Hide" do
           para "second"
@@ -30,16 +30,16 @@ class ManyFileEditor < Shoes::Shape
     end
   end
 
-  def editing_window(blah)
-    blah.app do
-      blah.append do
+  def editing_window(foobar)
+    foobar.app do
+      foobar.append do
         para "editing_window"
       end
     end
   end
 
-  def initialize(blah)
-    main_window(blah)
+  def initialize(foobar)
+    main_window(foobar)
   end
 end
 
