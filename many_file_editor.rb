@@ -12,40 +12,26 @@
 # TODO:
 =end
 
-# For some inexplicable reason '< Shoes::Shape' works while 
-# '< Shoes' crashes after a few seconds
-class ManyFileEditor < Shoes::Shape
-  def main_window(foobar)
-    @main_window = foobar.app do
-      foobar.append do
-        para "main_window"
-        button "Hide" do
-          para "second"
-          # why aren't hide/show working?
-          @main_window.hide()
-          @editing_window = editing_window
-          @editing_window.show()
-        end
-      end
-    end
-  end
-
-  def editing_window(foobar)
-    foobar.app do
-      foobar.append do
-        para "editing_window"
-      end
-    end
-  end
-
-  def initialize(foobar)
-    main_window(foobar)
-  end
-end
-
+# Trying a class-less system.
 Shoes.app :title => "Many File Editor" do
-  @many_file_editor = ManyFileEditor.new(self)
+  @main_window = flow do
+    button "Show Editing Window" do
+      @main_window.hide()
+      @editing_window.show()
+    end
+  end
+
+  @editing_window = flow do
+    button "Show Main Window" do
+      @editing_window.hide()
+      @main_window.show()
+    end
+  end
+
+  @editing_window.hide()
 end
+
+
 
 
 # placeholder stuff:
