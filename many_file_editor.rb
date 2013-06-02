@@ -12,14 +12,34 @@
 # TODO:
 =end
 
-# For some inexplicable reason Shoes::Shape works while just '< Shoes' doesn't
+# For some inexplicable reason '< Shoes::Shape' works while 
+# '< Shoes' crashes after a few seconds
 class ManyFileEditor < Shoes::Shape
-  def initialize(blah)
-    blah.app do
+  def main_window(blah)
+    @main_window = blah.app do
       blah.append do
-        para "test1"
+        para "main_window"
+        button "Hide" do
+          para "second"
+          # why aren't hide/show working?
+          @main_window.hide()
+          @editing_window = editing_window
+          @editing_window.show()
+        end
       end
     end
+  end
+
+  def editing_window(blah)
+    blah.app do
+      blah.append do
+        para "editing_window"
+      end
+    end
+  end
+
+  def initialize(blah)
+    main_window(blah)
   end
 end
 
