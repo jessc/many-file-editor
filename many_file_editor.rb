@@ -14,19 +14,38 @@
 
 # Trying a class-less system.
 Shoes.app :title => "Many File Editor" do
-  @main_window = flow do
-    button "Show Editing Window" do
-      @main_window.hide()
-      @editing_window.show()
+  @main_window =
+    flow :width => '100%', :height => '100%', :margin => 10 do
+      stack :width => '48%', :height => '100%' do
+        para "Paste Near-Filenames Here"
+        @near_filenames = edit_box.text
+        para "Folder Location"
+        @folder_location = edit_line.text
+        # glob the list of files at folder_location
+        # later open the files that match the regex
+       end
+      stack :width => '48%', :height => '100%' do
+        para "Place Regex Here"
+        @regex = edit_line.text
+        button "Apply Regex" do; end
+        @filenames_list = edit_box.text
+        button "Open Files" do; end
+        button "Editing Window" do
+          @main_window.hide()
+          @editing_window.show()
+        end
+      end
     end
-  end
 
-  @editing_window = flow do
-    button "Show Main Window" do
-      @editing_window.hide()
-      @main_window.show()
+  @editing_window =
+    flow do
+      # why isn't this button showing @main_window?
+      # it only hides @editing_window
+      button "Main Window" do
+        @editing_window.hide()
+        @main_window.show()
+      end
     end
-  end
 
   @editing_window.hide()
 end
@@ -36,26 +55,6 @@ end
 
 # placeholder stuff:
     # main_window(flow)
-    # flow.app :width => '100%', :height => '100%', :margin => 10 do
-    #   stack.app :width => '48%', :height => '100%' do
-    #     para.app "Paste Near-Filenames Here"
-    #     @near_filenames = edit_box.text
-    #     para.app "Folder Location"
-    #     @folder_location = edit_line.text
-    #     # glob the list of files at folder_location
-    #     # later open the files that match the regex
-    #    end
-    #   stack.app :width => '48%', :height => '100%' do
-    #     para.app "Place Regex Here"
-    #     @regex = edit_line.text
-    #     button.app "Apply Regex" do
-    #     end
-    #     @filenames_list = edit_box.text
-    #     button.app "Open Files" do
-    #     end
-    #     # para link("Editing Window", :click => "/editing_window")
-    #   end
-    # end
   # end
 
   # def main_window
