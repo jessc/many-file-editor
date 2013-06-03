@@ -30,13 +30,17 @@ class ManyFileEditor
             @near_filenames = edit_box.text # must use .text later
             para "Folder Location"
             @folder_location = edit_line
-            
+
             # placeholder to show that edit_line.text won't work correctly
+            # note: it looks like when changing back from editing_window
+            # this does not disapper?
             button "show" do
               para @folder_location.text
             end
 
             # glob the list of files at folder_location
+            # @file_list = get_list_of_files(folder_location)
+
             # later open the files that match the regex
            end
           stack :width => '48%' do
@@ -67,6 +71,20 @@ class ManyFileEditor
     end
     f
   end
+
+  def get_list_of_files(folder_location)
+    # this is some unchanged code from a previous project
+    # that may help with getting the files from the folder_location
+    @file_list = []
+    folder_location.each do |path|
+      if path.end_with? "/" then path += "**/*"
+      else path += "/**/*"
+      end
+      @file_list << Dir.glob(path)
+    end
+    @file_list.flatten!
+  end
+
 end
 
 Shoes.app :title => "Many File Editor" do
