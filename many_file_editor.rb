@@ -27,9 +27,15 @@ class ManyFileEditor
         flow :margin => 10, :width => '96%' do 
           stack :width => '48%' do
             para "Paste Near-Filenames Here"
-            @near_filenames = edit_box.text
+            @near_filenames = edit_box.text # must use .text later
             para "Folder Location"
-            @folder_location = edit_line.text
+            @folder_location = edit_line
+            
+            # placeholder to show that edit_line.text won't work correctly
+            button "show" do
+              para @folder_location.text
+            end
+
             # glob the list of files at folder_location
             # later open the files that match the regex
            end
