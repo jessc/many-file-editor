@@ -29,14 +29,13 @@ class ManyFileEditor
           stack :width => '48%' do
             para "Paste Near-Filenames Here"
             @near_filenames = edit_box
-            para "Folder Location"
-            folder_location = edit_line
 
-            # note: it looks like when changing back from editing_window
-            # this does not disapper? I wonder why.
-            button "show" do
-              para folder_location.text
+            # example of how to use .text:
+            para "Folder Location"
+            @folder_location = edit_line do
+              @para.text = @folder_location.text
             end
+            @para = para ""
 
             # glob the list of files at folder_location
             # @file_list = get_file_list(folder_location)
