@@ -23,23 +23,25 @@ class ManyFileEditor
     s = self
     foobar.app do
       @main_window = 
-        # why with ":height => '95%'" on flow and stack doesn't it work?
+        # adding ":height => '95%'" on flow and stack causes
+        # an infinite scrolling window, which is a bug in Shoes
         flow :margin => 10, :width => '96%' do 
           stack :width => '48%' do
             para "Paste Near-Filenames Here"
-            @near_filenames = edit_box.text # must use .text later
+            @near_filenames = edit_box
             para "Folder Location"
-            @folder_location = edit_line
+            folder_location = edit_line
 
-            # placeholder to show that edit_line.text won't work correctly
             # note: it looks like when changing back from editing_window
-            # this does not disapper?
+            # this does not disapper? I wonder why.
             button "show" do
-              para @folder_location.text
+              para folder_location.text
             end
 
             # glob the list of files at folder_location
-            # @file_list = get_list_of_files(folder_location)
+            # @file_list = get_file_list(folder_location)
+
+            # apply regex to @file_list inplace
 
             # later open the files that match the regex
            end
@@ -72,16 +74,15 @@ class ManyFileEditor
     f
   end
 
-  def get_list_of_files(folder_location)
-    # this is some unchanged code from a previous project
-    # that may help with getting the files from the folder_location
+  def get_file_list(folder_location)
+    # this is some unchanged code from a previous project that
+    # may help with getting the files from the folder_location
     @file_list = []
-    folder_location.each do |path|
-      if path.end_with? "/" then path += "**/*"
-      else path += "/**/*"
-      end
-      @file_list << Dir.glob(path)
+    path = folder_location
+    if path.end_with? "/" then path += "**/*"
+    else path += "/**/*"
     end
+    @file_list << Dir.glob(path)
     @file_list.flatten!
   end
 
