@@ -31,11 +31,18 @@ class ManyFileEditor
             @near_filenames = edit_box
 
             # example of how to use .text:
-            para "Folder Location"
-            @folder_location = edit_line do
-              @para.text = @folder_location.text
+            # para "Folder Location"
+            # @folder_location = edit_line do
+            #   @para.text = @folder_location.text
+            # end
+            # @para = para ""
+
+            button "Choose Folder" do
+              folder = ask_open_folder
+              # folder.each do |file|
+              #   para file
+              # end
             end
-            @para = para ""
 
             # glob the list of files at folder_location
             # @file_list = get_file_list(folder_location)
