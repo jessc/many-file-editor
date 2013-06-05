@@ -25,13 +25,13 @@ class ManyFileEditor
       @main_window = 
         # adding ":height => '95%'" on flow and stack causes
         # an infinite scrolling window, which is a bug in Shoes
-        flow :margin => 10, :width => '96%' do 
-          stack :width => '48%' do
+        flow :margin => 10, :width => '98%' do 
+          stack :width => '49%' do
             para "Paste Near-Filenames Here"
             @near_filenames = edit_box
 
             # example of how to use .text:
-            # para "Folder Location"
+            # para "Folder Location:"
             # @folder_location = edit_line do
             #   @para.text = @folder_location.text
             # end
@@ -39,13 +39,15 @@ class ManyFileEditor
 
 
             button "Choose Folder" do
-              folder = ask_open_folder
+              @folder_location = ask_open_folder
               # for some reason this is showing at the top of the window
               # rather than underneath the button
-              para folder
+              @para.text = @folder_location
             end
-
             para "Folder Location:"
+            @para = para ""
+
+            # @folder_loc_para = @folder_location.text
 
             # apply regex to @file_list inplace
 
@@ -55,7 +57,7 @@ class ManyFileEditor
             # open the files in @file_list
 
            end
-          stack :width => '48%' do
+          stack :width => '49%' do
             para "Place Regex Here"
             @regex = edit_line.text
             button "Apply Regex" do; end
