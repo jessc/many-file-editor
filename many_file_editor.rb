@@ -37,19 +37,23 @@ class ManyFileEditor
             # end
             # @para = para ""
 
+
             button "Choose Folder" do
               folder = ask_open_folder
-              # folder.each do |file|
-              #   para file
-              # end
+              # for some reason this is showing at the top of the window
+              # rather than underneath the button
+              para folder
             end
+
+            para "Folder Location:"
+
+            # apply regex to @file_list inplace
 
             # glob the list of files at folder_location
             # @file_list = get_file_list(folder_location)
 
-            # apply regex to @file_list inplace
+            # open the files in @file_list
 
-            # later open the files that match the regex
            end
           stack :width => '48%' do
             para "Place Regex Here"
