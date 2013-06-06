@@ -44,12 +44,9 @@ class ManyFileEditor
               @folder_location = ask_open_folder
               # for some reason this is showing at the top of the window
               # rather than underneath the button
-              @para_folder_loc.text = @folder_location
+              @para_folder_loc.text = "Folder Location:\n" + @folder_location
             end
-            para "Folder Location:"
             @para_folder_loc = para ""
-
-            # para @near_filenames.text
 
             @para_near_filenames = para ""
 
