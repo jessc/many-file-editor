@@ -28,7 +28,9 @@ class ManyFileEditor
         flow :margin => 10, :width => '98%' do 
           stack :width => '49%' do
             para "Paste Near-Filenames Here"
-            @near_filenames = edit_box
+            @near_filenames = edit_box do
+              @para_near_filenames.text = @near_filenames.text
+            end
 
             # example of how to use .text:
             # para "Folder Location:"
@@ -48,6 +50,11 @@ class ManyFileEditor
             @para_folder_loc = para ""
 
             para @near_filenames.text
+
+            # button "Show near_filenames" do
+            #   @para_near_filenames.text = @near_filenames
+            # end
+            @para_near_filenames = para ""
 
 
             # apply regex to @file_list inplace
