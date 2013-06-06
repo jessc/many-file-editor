@@ -38,16 +38,17 @@ class ManyFileEditor
             # @para = para ""
 
 
-            button "Choose Folder" do
+            button "Folder Containing Files" do
               @folder_location = ask_open_folder
               # for some reason this is showing at the top of the window
               # rather than underneath the button
-              @para.text = @folder_location
+              @para_folder_loc.text = @folder_location
             end
             para "Folder Location:"
-            @para = para ""
+            @para_folder_loc = para ""
 
-            # @folder_loc_para = @folder_location.text
+            para @near_filenames.text
+
 
             # apply regex to @file_list inplace
 
