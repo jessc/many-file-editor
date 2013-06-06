@@ -49,11 +49,8 @@ class ManyFileEditor
             para "Folder Location:"
             @para_folder_loc = para ""
 
-            para @near_filenames.text
+            # para @near_filenames.text
 
-            # button "Show near_filenames" do
-            #   @para_near_filenames.text = @near_filenames
-            # end
             @para_near_filenames = para ""
 
 
