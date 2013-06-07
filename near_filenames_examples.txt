@@ -1,0 +1,17 @@
+
+# Pasted in text:
+ * [[bk_BeyondQuantumTheory|Beyond Quantum Theory]]
+ * [[bk_ConsciousnessAnomalies|Consciousness-Related Anomalies]]
+ * [[bk_BioObserverParticipation|Biological Observer-Participation]]
+ * [[bk_RememberWholesale|We Can Remember It For You Wholesale]]
+ * [[bk_TranscentionHypothesis|Transcention Hypothesis]]
+
+
+# Desired output:
+
+bk_BeyondQuantumTheory.markdown
+bk_ConsciousnessAnomalies.markdown
+bk_BioObserverParticipation.markdown
+bk_RememberWholesale.markdown
+bk_TranscentionHypothesis.markdown
+
