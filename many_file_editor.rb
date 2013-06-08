@@ -22,6 +22,16 @@ class ManyFileEditor
   def main_window(foobar)
     s = self
     foobar.app do
+
+      keypress do |key|
+        case key
+        when "h"
+          alert "hello"
+        when "a"
+          alert "aardvark"
+        end
+      end
+
       @main_window = 
         # adding ":height => '95%'" on flow and stack causes
         # an infinite scrolling window, which is a bug in Shoes
@@ -30,8 +40,6 @@ class ManyFileEditor
 
             # Figure out how cut/copy/paste works in Shoes
             # apparently it has something to do with keypress.
-            # I know I've seen a script to do it, but I haven't
-            # found it yet.
             para "Paste Near-Filenames Here"
             @near_filenames = edit_box do
               @para_near_filenames.text = @near_filenames.text
