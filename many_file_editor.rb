@@ -26,7 +26,8 @@ class ManyFileEditor
       keypress do |key|
         case key
         when "h"
-          alert "hello"
+          @x = "hello"
+          alert @x 
         when "a"
           alert "aardvark"
         end
@@ -40,6 +41,7 @@ class ManyFileEditor
 
             # Figure out how cut/copy/paste works in Shoes
             # apparently it has something to do with keypress.
+            # May have something to do with pbpaste?
             para "Paste Near-Filenames Here"
             @near_filenames = edit_box do
               @para_near_filenames.text = @near_filenames.text
