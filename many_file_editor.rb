@@ -27,6 +27,11 @@ class ManyFileEditor
         # an infinite scrolling window, which is a bug in Shoes
         flow :margin => 10, :width => '98%' do 
           stack :width => '49%' do
+
+            # Figure out how cut/copy/paste works in Shoes
+            # apparently it has something to do with keypress.
+            # I know I've seen a script to do it, but I haven't
+            # found it yet.
             para "Paste Near-Filenames Here"
             @near_filenames = edit_box do
               @para_near_filenames.text = @near_filenames.text
