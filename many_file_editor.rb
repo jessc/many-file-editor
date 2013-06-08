@@ -13,6 +13,10 @@
 # TODO:
 =end
 
+# Should probably switch to Visual Ruby or some other GUI to complete
+# this project because Shoes is out of date and doesn't seem to work
+# well with copy/paste, which is vital to this program.
+
 
 class ManyFileEditor
   def initialize(foobar)
