@@ -33,11 +33,11 @@ Click "Exit" when you are done.
 
 Main Window:
 
-![main_window](./main_window.png?raw=true)
+![main_window](./images/main_window.png?raw=true)
 
 Editing Window:
 
-![editing_window](./editing_window.png?raw=true)
+![editing_window](./images/editing_window.png?raw=true)
 
 ## Contributing
 
