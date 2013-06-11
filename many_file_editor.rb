@@ -17,6 +17,8 @@
 # this project because Shoes is out of date and doesn't seem to work
 # well with copy/paste, which is vital to this program.
 
+# Update: Hackety Hack is built on Shoes and has copy and paste,
+# so there must be a way to do it. Look through HH's source.
 
 class ManyFileEditor
   def initialize(foobar)
