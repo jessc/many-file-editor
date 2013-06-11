@@ -13,12 +13,12 @@
 # TODO:
 =end
 
-# Should probably switch to Visual Ruby or some other GUI to complete
-# this project because Shoes is out of date and doesn't seem to work
-# well with copy/paste, which is vital to this program.
+# Search for "keypress" on this file to see how Hackety Hack does copy/paste:
+# https://github.com/hacketyhack/hacketyhack/blob/master/app/ui/editor/editor.rb
+# Take the relevant code out and apply it to many_file_editor.rb
+# This file is now saved as:
+# hackey_hack_ui_editor.rb
 
-# Update: Hackety Hack is built on Shoes and has copy and paste,
-# so there must be a way to do it. Look through HH's source.
 
 class ManyFileEditor
   def initialize(foobar)
