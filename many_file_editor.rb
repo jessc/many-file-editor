@@ -29,13 +29,15 @@ class ManyFileEditor
     s = self
     foobar.app do
 
+      # :alt_v works for alt and command in OS X
+      # :control_v doesn't seem to do anything
       keypress do |key|
         case key
         when "h"
           @x = "hello"
           alert @x 
-        when "a"
-          alert "aardvark"
+        when :alt_v
+          alert self.clipboard
         end
       end
 
