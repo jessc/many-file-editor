@@ -37,7 +37,7 @@ class ManyFileEditor
           @x = "hello"
           alert @x 
         when :alt_v
-          alert self.clipboard
+          @near_filenames.text = self.clipboard
         end
       end
 
