@@ -33,12 +33,12 @@ class ManyFileEditor
       # :control_v doesn't seem to do anything
       keypress do |key|
         case key
-        when "h"
-          @x = "hello"
-          alert @x 
         when :alt_v
           @near_filenames.focus
           @near_filenames.text = self.clipboard
+        when :alt_g
+          @regex.focus
+          @regex.text = self.clipboard
         end
       end
 
@@ -85,9 +85,9 @@ class ManyFileEditor
            end
           stack :width => '49%' do
             para "Place Regex Here"
-            @regex = edit_line.text
+            @regex = edit_line
             button "Apply Regex" do; end
-            @filenames_list = edit_box.text
+            @filenames_list = edit_box
             button "Open Files" do; end
             button "Instructions Window" do
               @main_window.hide
@@ -115,7 +115,7 @@ class ManyFileEditor
         stack do
         # add these functions so they work like they say:
         para "When you press alt_v or command_v it will paste to near filenames box."
-        para "When you press alt_d or commend_d it will paste to regex box."
+        para "When you press alt_g or commend_g it will paste to regex box."
         end
       end
     end
