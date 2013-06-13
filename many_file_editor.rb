@@ -25,6 +25,9 @@ class ManyFileEditor
     main_window(foobar)
   end
 
+  def instructions_window(foobar)
+  end
+
   def main_window(foobar)
     s = self
     foobar.app do
@@ -37,6 +40,7 @@ class ManyFileEditor
           @x = "hello"
           alert @x 
         when :alt_v
+          @near_filenames.focus
           @near_filenames.text = self.clipboard
         end
       end
@@ -89,9 +93,9 @@ class ManyFileEditor
             @filenames_list = edit_box.text
             button "Open Files" do; end
             button "Editing Window" do
-              @main_window.hide()
+              @main_window.hide
               @editing_window = s.editing_window(foobar)
-              @editing_window.show()
+              @editing_window.show
             end
           end
         end
