@@ -25,9 +25,6 @@ class ManyFileEditor
     main_window(foobar)
   end
 
-  def instructions_window(foobar)
-  end
-
   def main_window(foobar)
     s = self
     foobar.app do
@@ -105,6 +102,19 @@ class ManyFileEditor
           end
         end
     end
+  end
+
+  def instructions_window(foobar)
+    f = nil
+    foobar.app do
+      f = flow do
+        button "Main Window" do
+          @instructions_window.hide()
+          @main_window.show()
+        end
+      end
+    end
+    f
   end
 
   def editing_window(foobar)
