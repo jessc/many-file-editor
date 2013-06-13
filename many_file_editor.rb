@@ -87,6 +87,7 @@ class ManyFileEditor
             para "Place Regex Here"
             @regex = edit_line
             button "Apply Regex" do; end
+            para "Fixed Filenames:"
             @filenames_list = edit_box
             button "Open Files" do; end
             button "Instructions Window" do
@@ -114,8 +115,8 @@ class ManyFileEditor
         end
         stack do
         # add these functions so they work like they say:
-        para "When you press alt_v or command_v it will paste to near filenames box."
-        para "When you press alt_g or commend_g it will paste to regex box."
+        para "When you press alt_v or cmd_v it will paste to near filenames box."
+        para "When you press alt_g or cmd_g it will paste to regex box."
         end
       end
     end
