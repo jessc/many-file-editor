@@ -90,6 +90,7 @@ class ManyFileEditor
             para "Fixed Filenames:"
             @filenames_list = edit_box
             button "Open Files" do; end
+            para "\n\n"
             button "Instructions Window" do
               @main_window.hide
               @instructions_window = s.instructions_window(foobar)
