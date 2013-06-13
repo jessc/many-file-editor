@@ -112,6 +112,11 @@ class ManyFileEditor
           @instructions_window.hide()
           @main_window.show()
         end
+        stack do
+        # add these functions so they work like they say:
+        para "When you press alt_v or command_v it will paste to near filenames box."
+        para "When you press alt_d or commend_d it will paste to regex box."
+        end
       end
     end
     f
