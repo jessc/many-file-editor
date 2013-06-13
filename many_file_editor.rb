@@ -92,6 +92,11 @@ class ManyFileEditor
             button "Apply Regex" do; end
             @filenames_list = edit_box.text
             button "Open Files" do; end
+            button "Instructions Window" do
+              @main_window.hide
+              @instructions_window = s.instructions_window(foobar)
+              @instructions_window.show
+            end
             button "Editing Window" do
               @main_window.hide
               @editing_window = s.editing_window(foobar)
