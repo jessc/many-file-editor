@@ -74,8 +74,8 @@ class ManyFileEditor
 
             @para_near_filenames = para ""
 
-
-            # apply regex to @file_list inplace
+            # capture near_filenames with regex
+            # apply regex to @file_list with Ruby's .scan, perhaps?
 
             # glob the list of files at folder_location
             # @file_list = get_file_list(folder_location)

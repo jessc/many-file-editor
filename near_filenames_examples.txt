@@ -1,13 +1,16 @@
 
 # Pasted in text:
 
+pasted = <<HEREDOC
  * [[bk_BeyondQuantumTheory|Beyond Quantum Theory]]
  * [[bk_RememberWholesale|We Can Remember It For You Wholesale]]
  * [[bk_TranscentionHypothesis|Transcention Hypothesis]]
-
+HEREDOC
 
 # Regex Match Used:
-## (bk_\w+)
+
+captured = pasted.scan(/(bk_\w+)/)
+puts captures
 
 
 # Desired output:
