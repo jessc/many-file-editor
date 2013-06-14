@@ -6,13 +6,8 @@
  * [[bk_TranscentionHypothesis|Transcention Hypothesis]]
 
 
-# Regex Used:
-## (figure out)
-
-### first try:
-### * [[bk_BeyondQuantumTheory|Beyond Quantum Theory]]
-### (bk_.+).+?
-
+# Regex Match Used:
+## (bk_\w+)
 
 
 # Desired output:
