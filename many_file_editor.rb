@@ -118,6 +118,7 @@ class ManyFileEditor
         # add these functions so they work like they say:
         para "When you press alt_v or cmd_v it will paste to near filenames box."
         para "When you press alt_g or cmd_g it will paste to regex box."
+        para "Pasting more than one copy in at a time is unfortunately not supported."
         end
       end
     end
