@@ -125,14 +125,18 @@ class ManyFileEditor
     f = nil
     foobar.app do
       f = flow do
-        
-        file_text = edit_box :margin => 10, :width => '98%' do
-        end
 
         button "Main Window" do
           @editing_window.hide()
           @main_window.show()
         end
+        
+        file_text = edit_box :margin => 10, :width => '98%', :height => 400 do
+        end
+
+        button "Previous File" do; end
+        button "Save File" do; end
+        button "Next File" do; end
 
       end
     end
