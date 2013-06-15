@@ -48,9 +48,6 @@ class ManyFileEditor
         flow :margin => 10, :width => '98%' do 
           stack :width => '49%' do
 
-            # Figure out how cut/copy/paste works in Shoes
-            # apparently it has something to do with keypress.
-            # May have something to do with pbpaste?
             para "Paste Near-Filenames Here"
             @near_filenames = edit_box do
               @para_near_filenames.text = @near_filenames.text
@@ -66,8 +63,6 @@ class ManyFileEditor
 
             button "Folder Containing Files" do
               @folder_location = ask_open_folder
-              # for some reason this is showing at the top of the window
-              # rather than underneath the button
               @para_folder_loc.text = "Folder Location:\n" + @folder_location
             end
             @para_folder_loc = para ""
@@ -75,6 +70,7 @@ class ManyFileEditor
             @para_near_filenames = para ""
 
             # capture near_filenames with regex
+            # use Ruby's substitute to change the near_filenames, perhaps?
             # apply regex to @file_list with Ruby's .scan, perhaps?
 
             # glob the list of files at folder_location
@@ -118,7 +114,7 @@ class ManyFileEditor
         # add these functions so they work like they say:
         para "When you press alt_v or cmd_v it will paste to near filenames box."
         para "When you press alt_g or cmd_g it will paste to regex box."
-        para "Pasting more than one copy in at a time is unfortunately not supported."
+        para "Pasting multiple times in the same box is unfortunately not supported."
         end
       end
     end
