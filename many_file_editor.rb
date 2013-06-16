@@ -103,17 +103,25 @@ class ManyFileEditor
 
            end
           stack :width => '49%' do
-            para "Paste Regex with CMD_G"
-            @regex = edit_line
+            para "Regex:"
             button "Apply Regex" do; end
+            @regex = edit_line
 
-            para "Ruby Substitution with CMD_Y"
+            para "\nRuby Substitution:"
+            flow do
+              button "Paste" do
+                @r_sub.text = self.clipboard
+              end
+              button "Copy" do
+                self.clipboard = @r_sub.text
+              end
+              button "Apply" do; end
+            end
             @r_sub = edit_line
-            button "Apply Substitution" do; end
 
-            para "Fixed Filenames:"
-            @filenames_list = edit_box
+            para "\nFixed Filenames:"
             button "Open Files" do; end
+            @filenames_list = edit_box
 
             button "Editing Window" do
               @main_window.hide
