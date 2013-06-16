@@ -30,10 +30,13 @@ class ManyFileEditor
     foobar.app do
 
       # :alt_v works for alt and command in OS X
-      # :control_v doesn't seem to do anything
+      #   :control_v doesn't seem to do anything
       keypress do |key|
+        # might be better to use buttons rather than keypresses,
+        #   it might be a little clearer because keypresses
+        #   are so wonky in Shoes
         # for some reason the first two pastes
-        # work (even if different), but not the third?
+        #   work (even if different), but not the third?
         case key
         when :alt_c
           @near_filenames.focus
@@ -63,6 +66,12 @@ class ManyFileEditor
         flow :margin => 10, :width => '98%' do 
           stack :width => '49%' do
 
+            button "Click for Instructions" do
+              @main_window.hide
+              @instructions_window = s.instructions_window(foobar)
+              @instructions_window.show
+            end
+
             para "Paste Near-Filenames\nwith CMD_V"
             @near_filenames = edit_box do
               @para_near_filenames.text = @near_filenames.text
@@ -75,8 +84,7 @@ class ManyFileEditor
             # end
             # @para = para ""
 
-
-            button "Folder Containing Files" do
+            button "Choose Folder of Files" do
               @folder_location = ask_open_folder
               @para_folder_loc.text = "Folder Location:\n" + @folder_location
             end
@@ -107,11 +115,6 @@ class ManyFileEditor
             @filenames_list = edit_box
             button "Open Files" do; end
 
-            button "Instructions Window" do
-              @main_window.hide
-              @instructions_window = s.instructions_window(foobar)
-              @instructions_window.show
-            end
             button "Editing Window" do
               @main_window.hide
               @editing_window = s.editing_window(foobar)
@@ -131,16 +134,15 @@ class ManyFileEditor
           @main_window.show()
         end
         stack do
-        # add these functions so they work like they say:
-        para "CMD_V: paste to Near Filenames box."
-        para "CMD_G: paste to Regex box."
-        para "CMD_Y: paste to Ruby Substitution box."
-        para "Pasting in different places in the same box\nis unfortunately not supported."
-        para "\n\n"
-        para "CMD_C: copy from Near Filenames box."
-        para "CMD_F: copy from Regex box."
-        para "CMD_T: copy from Ruby Substitution box."
-        para "Copying will copy the entire box, not just the selected text."
+          para "Pasting in different places in the same box is unfortunately not supported."
+          para "CMD_V: paste to Near Filenames box."
+          para "CMD_G: paste to Regex box."
+          para "CMD_Y: paste to Ruby Substitution box."
+          para "\n"
+          para "Copying will copy the entire box, not just the selected text."
+          para "CMD_C: copy from Near Filenames box."
+          para "CMD_F: copy from Regex box."
+          para "CMD_T: copy from Ruby Substitution box."
         end
       end
     end
