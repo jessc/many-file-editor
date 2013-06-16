@@ -48,7 +48,7 @@ class ManyFileEditor
         flow :margin => 10, :width => '98%' do 
           stack :width => '49%' do
 
-            para "Paste Near-Filenames Here"
+            para "Paste Near-Filenames\nwith CMD_V"
             @near_filenames = edit_box do
               @para_near_filenames.text = @near_filenames.text
             end
@@ -80,13 +80,18 @@ class ManyFileEditor
 
            end
           stack :width => '49%' do
-            para "Place Regex Here"
+            para "Paste Regex with CMD_G"
             @regex = edit_line
             button "Apply Regex" do; end
+
+            para "Ruby Substitution Here"
+            @r_sub = edit_line
+            button "Apply Substitution" do; end
+
             para "Fixed Filenames:"
             @filenames_list = edit_box
             button "Open Files" do; end
-            para "\n\n"
+
             button "Instructions Window" do
               @main_window.hide
               @instructions_window = s.instructions_window(foobar)

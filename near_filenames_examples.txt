@@ -10,7 +10,7 @@ HEREDOC
 # Regex Match Used:
 
 captured = pasted.scan(/(bk_\w+)/)
-puts captures
+puts captured
 
 
 # Desired output:
