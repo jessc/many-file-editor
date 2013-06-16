@@ -32,13 +32,28 @@ class ManyFileEditor
       # :alt_v works for alt and command in OS X
       # :control_v doesn't seem to do anything
       keypress do |key|
+        # for some reason the first two pastes
+        # work (even if different), but not the third?
         case key
+        when :alt_c
+          @near_filenames.focus
+          self.clipboard = @near_filenames.text
+        when :alt_f
+          @regex.focus
+          self.clipboard = @regex.text
+        when :alt_t
+          @r_sub.focus
+          self.clipboard = @r_sub.text
+
         when :alt_v
           @near_filenames.focus
           @near_filenames.text = self.clipboard
         when :alt_g
           @regex.focus
           @regex.text = self.clipboard
+        when :alt_y
+          @r_sub.focus
+          @r_sub.text = self.clipboard
         end
       end
 
@@ -84,7 +99,7 @@ class ManyFileEditor
             @regex = edit_line
             button "Apply Regex" do; end
 
-            para "Ruby Substitution Here"
+            para "Ruby Substitution with CMD_Y"
             @r_sub = edit_line
             button "Apply Substitution" do; end
 
@@ -117,9 +132,15 @@ class ManyFileEditor
         end
         stack do
         # add these functions so they work like they say:
-        para "When you press alt_v or cmd_v it will paste to near filenames box."
-        para "When you press alt_g or cmd_g it will paste to regex box."
-        para "Pasting multiple times in the same box is unfortunately not supported."
+        para "CMD_V: paste to Near Filenames box."
+        para "CMD_G: paste to Regex box."
+        para "CMD_Y: paste to Ruby Substitution box."
+        para "Pasting in different places in the same box\nis unfortunately not supported."
+        para "\n\n"
+        para "CMD_C: copy from Near Filenames box."
+        para "CMD_F: copy from Regex box."
+        para "CMD_T: copy from Ruby Substitution box."
+        para "Copying will copy the entire box, not just the selected text."
         end
       end
     end
