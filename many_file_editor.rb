@@ -13,13 +13,6 @@
 # TODO:
 =end
 
-# Search for "keypress" on this file to see how Hackety Hack does copy/paste:
-# https://github.com/hacketyhack/hacketyhack/blob/master/app/ui/editor/editor.rb
-# Take the relevant code out and apply it to many_file_editor.rb
-# This file is now saved as:
-# hackey_hack_ui_editor.rb
-
-
 class ManyFileEditor
   def initialize(foobar)
     main_window(foobar)
@@ -28,38 +21,6 @@ class ManyFileEditor
   def main_window(foobar)
     s = self
     foobar.app do
-
-      # :alt_v works for alt and command in OS X
-      #   :control_v doesn't seem to do anything
-      keypress do |key|
-        # might be better to use buttons rather than keypresses,
-        #   it might be a little clearer because keypresses
-        #   are so wonky in Shoes
-        # for some reason the first two pastes
-        #   work (even if different), but not the third?
-        case key
-        when :alt_c
-          @near_filenames.focus
-          self.clipboard = @near_filenames.text
-        when :alt_f
-          @regex.focus
-          self.clipboard = @regex.text
-        when :alt_t
-          @r_sub.focus
-          self.clipboard = @r_sub.text
-
-        when :alt_v
-          @near_filenames.focus
-          @near_filenames.text = self.clipboard
-        when :alt_g
-          @regex.focus
-          @regex.text = self.clipboard
-        when :alt_y
-          @r_sub.focus
-          @r_sub.text = self.clipboard
-        end
-      end
-
       @main_window = 
         # adding ":height => '95%'" on flow and stack causes
         # an infinite scrolling window, which is a bug in Shoes
@@ -71,17 +32,6 @@ class ManyFileEditor
               @para_folder_loc.text = @folder_location
             end
             @para_folder_loc = para "\n"
-
-            button "Instructions" do
-              @main_window.hide
-              @instructions_window = s.instructions_window(foobar)
-              @instructions_window.show
-            end
-            button "Editing Window" do
-              @main_window.hide
-              @editing_window = s.editing_window(foobar)
-              @editing_window.show
-            end
 
             para "Near-Filenames:"
             flow do
@@ -132,33 +82,16 @@ class ManyFileEditor
             para "\nFixed Filenames:"
             button "Open Files" do; end
             @filenames_list = edit_box
+
+            button "Editing Window" do
+              @main_window.hide
+              @editing_window = s.editing_window(foobar)
+              @editing_window.show
+            end
+
           end
         end
     end
-  end
-
-  def instructions_window(foobar)
-    f = nil
-    foobar.app do
-      f = flow do
-        button "Main Window" do
-          @instructions_window.hide()
-          @main_window.show()
-        end
-        stack do
-          para "Pasting in different places in the same box is unfortunately not supported."
-          para "CMD_V: paste to Near Filenames box."
-          para "CMD_G: paste to Regex box."
-          para "CMD_Y: paste to Ruby Substitution box."
-          para "\n"
-          para "Copying will copy the entire box, not just the selected text."
-          para "CMD_C: copy from Near Filenames box."
-          para "CMD_F: copy from Regex box."
-          para "CMD_T: copy from Ruby Substitution box."
-        end
-      end
-    end
-    f
   end
 
   def editing_window(foobar)
