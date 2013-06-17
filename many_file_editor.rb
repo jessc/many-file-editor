@@ -31,7 +31,6 @@ class ManyFileEditor
               @folder_location = ask_open_folder
               @para_folder_loc.text = @folder_location
             end
-            @para_folder_loc = para "\n"
 
             para "Near-Filenames:"
             flow do
@@ -43,6 +42,8 @@ class ManyFileEditor
               end
             end
             @near_filenames = edit_box
+
+            @para_folder_loc = para "\n"
           end
 
           # example of how to use .text:
