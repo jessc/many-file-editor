@@ -96,15 +96,23 @@ class ManyFileEditor
   end
 
   def editing_window(foobar)
+    # open in write mode each file in @file_list
+    # one by one editing each
+
+    # perhaps start by doing something like:
+    # @file_list = ["<file_name_placeholder>"]
+
     f = nil
     foobar.app do
       f = flow do
-
         para "Editing: <file_name_placeholder>"
         
         file_text = edit_box :margin => 10, :width => '98%', :height => 400 do
         end
 
+        button "Quit App" do
+          quit
+        end
         button "Main Window" do
           @editing_window.hide()
           @main_window.show()
@@ -112,7 +120,6 @@ class ManyFileEditor
         button "Previous File" do; end
         button "Save File" do; end
         button "Next File" do; end
-
       end
     end
     f
