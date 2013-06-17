@@ -66,42 +66,52 @@ class ManyFileEditor
         flow :margin => 10, :width => '98%' do 
           stack :width => '49%' do
 
-            button "Click for Instructions" do
+            button "Choose Folder with Files" do
+              @folder_location = ask_open_folder
+              @para_folder_loc.text = @folder_location
+            end
+            @para_folder_loc = para "\n"
+
+            button "Instructions" do
               @main_window.hide
               @instructions_window = s.instructions_window(foobar)
               @instructions_window.show
             end
-
-            para "Paste Near-Filenames\nwith CMD_V"
-            @near_filenames = edit_box do
-              @para_near_filenames.text = @near_filenames.text
+            button "Editing Window" do
+              @main_window.hide
+              @editing_window = s.editing_window(foobar)
+              @editing_window.show
             end
 
-            # example of how to use .text:
-            # para "Folder Location:"
-            # @folder_location = edit_line do
-            #   @para.text = @folder_location.text
-            # end
-            # @para = para ""
-
-            button "Choose Folder of Files" do
-              @folder_location = ask_open_folder
-              @para_folder_loc.text = "Folder Location:\n" + @folder_location
+            para "Near-Filenames:"
+            flow do
+              button "Copy" do
+                self.clipboard = @near_filenames.text
+              end
+              button "Paste" do
+                @near_filenames.text = self.clipboard
+              end
             end
-            @para_folder_loc = para ""
+            @near_filenames = edit_box
+          end
 
-            @para_near_filenames = para ""
+          # example of how to use .text:
+          # para "Folder Location:"
+          # @folder_location = edit_line do
+          #   @para.text = @folder_location.text
+          # end
+          # @para = para ""
 
-            # capture near_filenames with regex
-            # use Ruby's substitute to change the near_filenames, perhaps?
-            # apply regex to @file_list with Ruby's .scan, perhaps?
 
-            # glob the list of files at folder_location
-            # @file_list = get_file_list(folder_location)
+          # capture near_filenames with regex
+          # use Ruby's substitute to change the near_filenames, perhaps?
+          # apply regex to @file_list with Ruby's .scan, perhaps?
 
-            # open the files in @file_list
+          # glob the list of files at folder_location
+          # @file_list = get_file_list(folder_location)
 
-           end
+          # open the files in @file_list
+
           stack :width => '49%' do
             para "Regex:"
             button "Apply Regex" do; end
@@ -109,11 +119,11 @@ class ManyFileEditor
 
             para "\nRuby Substitution:"
             flow do
-              button "Paste" do
-                @r_sub.text = self.clipboard
-              end
               button "Copy" do
                 self.clipboard = @r_sub.text
+              end
+              button "Paste" do
+                @r_sub.text = self.clipboard
               end
               button "Apply" do; end
             end
@@ -122,12 +132,6 @@ class ManyFileEditor
             para "\nFixed Filenames:"
             button "Open Files" do; end
             @filenames_list = edit_box
-
-            button "Editing Window" do
-              @main_window.hide
-              @editing_window = s.editing_window(foobar)
-              @editing_window.show
-            end
           end
         end
     end
