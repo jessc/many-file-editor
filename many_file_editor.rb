@@ -100,13 +100,18 @@ class ManyFileEditor
     # one by one editing each
 
     # perhaps start by doing something like:
-    # @file_list = ["<file_name_placeholder>"]
+    file_list = ["/first/file_name"]#, "/second/file_name"]
 
     f = nil
     foobar.app do
       f = flow do
-        para "Editing: <file_name_placeholder>"
         
+        # make this switch to the prev/next when Prev/Next
+        # button is clicked 
+        file_list.each do |file_name|
+          para "Editing: #{file_name}"
+        end
+
         file_text = edit_box :margin => 10, :width => '98%', :height => 400 do
         end
 
