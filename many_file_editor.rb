@@ -47,7 +47,6 @@ class ManyFileEditor
           end
 
           # example of how to use .text:
-          # para "Folder Location:"
           # @folder_location = edit_line do
           #   @para.text = @folder_location.text
           # end
@@ -100,17 +99,19 @@ class ManyFileEditor
     # one by one editing each
 
     # perhaps start by doing something like:
-    file_list = ["/first/file_name"]#, "/second/file_name"]
+    file_list = ["/first/file_name", "/second/file_name"]
 
     f = nil
     foobar.app do
       f = flow do
         
         # make this switch to the prev/next when Prev/Next
-        # button is clicked 
-        file_list.each do |file_name|
-          para "Editing: #{file_name}"
-        end
+        # button is clicked
+        cur_file_num = 0
+        current_file = para "Editing: " + file_list[cur_file_num]
+        # file_list.each do |file_name|
+        #   para 
+        # end
 
         file_text = edit_box :margin => 10, :width => '98%', :height => 400 do
         end
@@ -124,7 +125,10 @@ class ManyFileEditor
         end
         button "Previous File" do; end
         button "Save File" do; end
-        button "Next File" do; end
+        button "Next File" do
+          cur_file_num += 1
+          current_file.text = "Editing: " + file_list[cur_file_num]
+        end
       end
     end
     f
