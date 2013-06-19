@@ -7,10 +7,16 @@ pasted = <<HEREDOC
  * [[bk_TranscentionHypothesis|Transcention Hypothesis]]
 HEREDOC
 
+
 # Regex Match Used:
 
 captured = pasted.scan(/(bk_\w+)/)
 puts captured
+
+
+# Folder with Files:
+
+/path/file_examples/
 
 
 # Desired output:

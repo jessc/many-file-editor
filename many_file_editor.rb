@@ -80,6 +80,13 @@ class ManyFileEditor
             @r_sub = edit_line
 
             para "\nFixed Filenames:"
+            button "Paste" do
+              @filenames_list.text = self.clipboard
+            end
+            button "Get File Names" do
+              # make get_file_list work with this program
+              @filenames_list.text = get_file_list(@folder_location)
+            end
             button "Open Files" do; end
             @filenames_list = edit_box
 
