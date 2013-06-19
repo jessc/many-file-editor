@@ -88,7 +88,9 @@ class ManyFileEditor
               @editing_window = s.editing_window(foobar)
               @editing_window.show
             end
-
+            button "Quit App" do
+              quit
+            end
           end
         end
     end
