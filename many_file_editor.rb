@@ -83,7 +83,12 @@ class ManyFileEditor
             end
             button "Get File Names" do
               # make get_file_list work with this program
-              @filenames_list.text = get_file_list(@folder_location)
+              # @filenames_list.text = get_file_list(@folder_location)
+
+              # why is get_file_list never returning anything?
+              @folder_location = "/Users/jessc/Documents/Dropbox/leaf/useful/code/many-file-editor/file_examples"
+              @filenames_list.text = @folder_location
+              alert get_file_list(@folder_location)[0]
             end
             button "Open Files" do; end
             @filenames_list = edit_box
@@ -144,8 +149,8 @@ class ManyFileEditor
     # may help with getting the files from the folder_location
     @file_list = []
     path = folder_location
-    if path.end_with? "/" then path += "**/*"
-    else path += "/**/*"
+    if path.end_with? "/" then path += "*"
+    else path += "/*"
     end
     @file_list << Dir.glob(path)
     @file_list.flatten!
