@@ -3,9 +3,7 @@
 # 2013-06
 # Jesse Cummins
 # https://github.com/jessc
-# With Shoes inspiration from Dan Garland:
-# https://github.com/dmgarland/TrafficLight
-# And inspiration from ashbb:
+# With inspiration from ashbb:
 # https://github.com/shoes/shoes/issues/236#issuecomment-18843728
 
 =begin
