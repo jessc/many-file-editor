@@ -81,10 +81,11 @@ class ManyFileEditor
             button "Paste" do
               @filenames_list.text = self.clipboard
             end
-            para @folder_location = "/Users/jessc/Documents/Dropbox/leaf/useful/code/many-file-editor/file_examples"
+
+            # make these short filenames
             button "Get File Names" do
               @file_list = s.get_file_list(@folder_location)
-              @filenames_list.text = @file_list
+              @file_list.each { |file| @filenames_list.text += file + "\n" }
             end
             button "Open Files" do; end
             @filenames_list = edit_box
