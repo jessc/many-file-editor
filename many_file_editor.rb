@@ -77,18 +77,19 @@ class ManyFileEditor
             end
             @r_sub = edit_line
 
-            para "\nFixed Filenames:"
-            button "Paste" do
-              @filenames_list.text = self.clipboard
-            end
+            # para "\nFixed Filenames:"
+            # button "Paste" do
+            #   @filenames_list.text = self.clipboard
+            # end
+            para @folder_location = "/Users/jessc/Documents/Dropbox/leaf/useful/code/many-file-editor/file_examples"
             button "Get File Names" do
               # make get_file_list work with this program
               # @filenames_list.text = get_file_list(@folder_location)
 
               # why is get_file_list never returning anything?
-              @folder_location = "/Users/jessc/Documents/Dropbox/leaf/useful/code/many-file-editor/file_examples"
-              @filenames_list.text = @folder_location
-              alert get_file_list(@folder_location)[0]
+              @filenames_list.text = get_file_list(@folder_location)[0]
+              # @filenames_list.text = @folder_location
+              # alert get_file_list(@folder_location)[0]
             end
             button "Open Files" do; end
             @filenames_list = edit_box
@@ -145,8 +146,6 @@ class ManyFileEditor
   end
 
   def get_file_list(folder_location)
-    # this is some unchanged code from a previous project that
-    # may help with getting the files from the folder_location
     @file_list = []
     path = folder_location
     if path.end_with? "/" then path += "*"
