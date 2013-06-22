@@ -85,10 +85,7 @@ class ManyFileEditor
 
             # make these short filenames
             button "Get File Names" do
-              @dirname = "/Users/jessc/Documents/Dropbox/leaf/useful/code/many-file-editor/file_examples/"
-              @file_list = Dir.entries(@dirname).select { |f| File.file?(@dirname + "#{f}") }
-
-              # @file_list = s.get_file_list(@folder_location)
+              @file_list = s.get_file_list(@folder_location)
               @file_list.each { |file| @filenames_list.text += file + "\n" }
             end
 
@@ -116,6 +113,9 @@ class ManyFileEditor
     # remember to add @ at front
     file_list = @file_list #["/first/file_name", "/second/file_name"]
     dirname = @folder_location
+
+    # perhaps in file_text start with first file in file_list
+    # @file_list.each { |file| puts File.read(dirname + file) }
 
     f = nil
     foobar.app do
@@ -149,16 +149,14 @@ class ManyFileEditor
   end
 
   def get_file_list(folder_location)
-    @dirname = "/Users/jessc/Documents/Dropbox/leaf/useful/code/many-file-editor/file_examples/"
-    @file_list = Dir.entries(@dirname).select { |f| File.file?(@dirname + "#{f}") }
+    folder_location = "/Users/jessc/Documents/Dropbox/leaf/useful/code/many-file-editor/file_examples/"
+    @file_list = Dir.entries(folder_location).select { |f| File.file?(folder_location + "#{f}") }
 
-    @file_list = []
-    path = folder_location
-    if path.end_with? "/" then path += "*"
-    else path += "/*"
-    end
-    @file_list << Dir.glob(path)
-    @file_list.flatten!
+    # if path.end_with? "/" then path += "*"
+    # else path += "/*"
+    # end
+    # @file_list << Dir.glob(path)
+    # @file_list.flatten!
   end
 
 end
