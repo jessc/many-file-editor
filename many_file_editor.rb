@@ -82,8 +82,6 @@ class ManyFileEditor
               @filenames_list.text = self.clipboard
             end
             
-
-            # make these short filenames
             button "Get File Names" do
               @file_list = s.get_file_list(@folder_location)
               @file_list.each { |file| @filenames_list.text += file + "\n" }
@@ -111,6 +109,9 @@ class ManyFileEditor
 
     # perhaps start by doing something like:
     # remember to add @ at front
+    # eventually change code in this method back to
+    # @folder_location instead of just dirname, no point
+    # having two variable names for the same thing
     file_list = @file_list #["/first/file_name", "/second/file_name"]
     dirname = @folder_location
 
@@ -125,6 +126,9 @@ class ManyFileEditor
         current_file = para "Editing: " + file_list[cur_file_num]
 
         file_text = edit_box :margin => 10, :width => '98%', :height => 400 do
+          # figure out how to change text in this edit_box
+          # when the cur_file changes:
+          # file_text.text = file_list[cur_file_name]
         end
 
         button "Quit App" do
@@ -151,12 +155,6 @@ class ManyFileEditor
   def get_file_list(folder_location)
     folder_location = "/Users/jessc/Documents/Dropbox/leaf/useful/code/many-file-editor/file_examples/"
     @file_list = Dir.entries(folder_location).select { |f| File.file?(folder_location + "#{f}") }
-
-    # if path.end_with? "/" then path += "*"
-    # else path += "/*"
-    # end
-    # @file_list << Dir.glob(path)
-    # @file_list.flatten!
   end
 
 end
