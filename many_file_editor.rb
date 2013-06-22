@@ -128,8 +128,9 @@ class ManyFileEditor
         file_text = edit_box :margin => 10, :width => '98%', :height => 400 do
           # figure out how to change text in this edit_box
           # when the cur_file changes:
-          # file_text.text = file_list[cur_file_name]
+          # file_text.text = file_list[cur_file_num]
         end
+        file_text.text = file_list[cur_file_num]
 
         button "Quit App" do
           quit
@@ -141,11 +142,13 @@ class ManyFileEditor
         button "Previous File" do
           cur_file_num -= 1 unless cur_file_num = 0
           current_file.text = "Editing: " + file_list[cur_file_num]
+          file_text.text = file_list[cur_file_num]
         end
         button "Save File" do; end
         button "Next File" do
           cur_file_num += 1 unless cur_file_num > file_list.length
           current_file.text = "Editing: " + file_list[cur_file_num]
+          file_text.text = file_list[cur_file_num]
         end
       end
     end
