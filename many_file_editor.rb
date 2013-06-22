@@ -84,14 +84,14 @@ class ManyFileEditor
             
 
             # make these short filenames
-            # perhaps integrate this code:
-            # dirname = "/Users/jessc/Documents/Dropbox/leaf/useful/code/many-file-editor/file_examples/"
-            # p Dir.entries(dirname).select { |f| File.file?(dirname + "#{f}") }
-
             button "Get File Names" do
-              @file_list = s.get_file_list(@folder_location)
+              @dirname = "/Users/jessc/Documents/Dropbox/leaf/useful/code/many-file-editor/file_examples/"
+              @file_list = Dir.entries(@dirname).select { |f| File.file?(@dirname + "#{f}") }
+
+              # @file_list = s.get_file_list(@folder_location)
               @file_list.each { |file| @filenames_list.text += file + "\n" }
             end
+
             button "Open Files" do; end
             @filenames_list = edit_box
 
