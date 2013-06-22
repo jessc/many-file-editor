@@ -113,7 +113,9 @@ class ManyFileEditor
     # one by one editing each
 
     # perhaps start by doing something like:
-    file_list = ["/first/file_name", "/second/file_name"]
+    # remember to add @ at front
+    file_list = @file_list #["/first/file_name", "/second/file_name"]
+    dirname = @folder_location
 
     f = nil
     foobar.app do
@@ -147,6 +149,9 @@ class ManyFileEditor
   end
 
   def get_file_list(folder_location)
+    @dirname = "/Users/jessc/Documents/Dropbox/leaf/useful/code/many-file-editor/file_examples/"
+    @file_list = Dir.entries(@dirname).select { |f| File.file?(@dirname + "#{f}") }
+
     @file_list = []
     path = folder_location
     if path.end_with? "/" then path += "*"
