@@ -83,11 +83,13 @@ class ManyFileEditor
             end
             
             button "Get File Names" do
-              @file_list = s.get_file_list(@folder_location)
+              @file_list = s.get_file_list(@folder_location, long_path = false)
               @file_list.each { |file| @filenames_list.text += file + "\n" }
             end
 
-            button "Open Files" do; end
+            button "Open Files" do
+              @longpath_filelist = s.get_file_list(@folder_location, long_path = true)
+            end
             @filenames_list = edit_box
 
             button "Editing Window" do
@@ -155,9 +157,12 @@ class ManyFileEditor
     f
   end
 
-  def get_file_list(folder_location)
+  def get_file_list(folder_location, long_path)
     folder_location = "/Users/jessc/Documents/Dropbox/leaf/useful/code/many-file-editor/file_examples/"
-    @file_list = Dir.entries(folder_location).select { |f| File.file?(folder_location + "#{f}") }
+    if long_path
+    else
+      @file_list = Dir.entries(folder_location).select { |f| File.file?(folder_location + "#{f}") }
+    end
   end
 
 end
