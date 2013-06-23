@@ -83,7 +83,7 @@ class ManyFileEditor
             end
             
             button "Get File Names" do
-              @file_list = s.get_file_list(@folder_location, long_path = false)
+              @file_list = s.get_file_list(@folder_location, long_path = true)
               @file_list.each { |file| @filenames_list.text += file + "\n" }
             end
 
@@ -142,7 +142,7 @@ class ManyFileEditor
           @main_window.show()
         end
         button "Previous File" do
-          cur_file_num -= 1 unless cur_file_num = 0
+          cur_file_num -= 1 unless cur_file_num == 0
           current_file.text = "Editing: " + file_list[cur_file_num]
           file_text.text = file_list[cur_file_num]
         end
@@ -157,12 +157,12 @@ class ManyFileEditor
     f
   end
 
-  def get_file_list(folder_location, long_path)
+  def get_file_list(folder_location, long_path = false)
     folder_location = "/Users/jessc/Documents/Dropbox/leaf/useful/code/many-file-editor/file_examples/"
-    if long_path
-    else
       @file_list = Dir.entries(folder_location).select { |f| File.file?(folder_location + "#{f}") }
-    end
+      if long_path
+        @file_list.map! { |f| f = folder_location + "#{f}" }
+      end
   end
 
 end
