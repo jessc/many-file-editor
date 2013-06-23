@@ -79,13 +79,16 @@ class ManyFileEditor
               @filenames_list.text = self.clipboard
             end
             
-            button "Get File Names" do
-              @file_list = s.get_file_list(@folder_location, long_path = true)
+            # button "Get File Names" do
+            button "Short File Names" do
+              @file_list = s.get_file_list(long_path = false)
               @file_list.each { |file| @filenames_list.text += file + "\n" }
             end
 
-            button "Open Files" do
-              @longpath_filelist = s.get_file_list(@folder_location, long_path = true)
+            # button "Open Files" do
+            button "Long File Names" do
+              @longpath_filelist = s.get_file_list(long_path = true)
+              # open editing window, start with first file
             end
             @filenames_list = edit_box
 
@@ -150,14 +153,16 @@ class ManyFileEditor
     f
   end
 
-  def get_file_list(folder_location, long_path = false)
-    unless folder_location != nil
-      folder_location = "/Users/jessc/Documents/Dropbox/leaf/useful/code/many-file-editor/file_examples/"
+  def get_file_list(long_path = false)
+    f_l = @folder_location
+    unless f_l != nil
+      f_l = "/Users/jessc/Documents/Dropbox/leaf/useful/code/many-file-editor/file_examples/"
     end
-    @file_list = Dir.entries(folder_location).select { |f| File.file?(folder_location + "#{f}") }
+    @file_list = Dir.entries(f_l).select { |f| File.file?(f_l + "#{f}") }
     if long_path
-      @file_list.map! { |f| f = folder_location + "#{f}" }
+      @file_list.map! { |f| f = f_l + "#{f}" }
     end
+    @file_list
   end
 end
 
