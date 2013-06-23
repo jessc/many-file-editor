@@ -81,20 +81,21 @@ class ManyFileEditor
             
             # button "Get File Names" do
             button "Short File Names" do
-              @file_list = s.get_file_list(long_path = false)
+              @shortnames_files = s.get_file_list(long_path = false)
               @filenames_list.text = ""
-              @file_list.each { |file| @filenames_list.text += file + "\n" }
+              @shortnames_files.each { |file| @filenames_list.text += file + "\n" }
             end
 
             # button "Open Files" do
             button "Long File Names" do
-              @longpath_filelist = s.get_file_list(long_path = true)
+              @longnames_files = s.get_file_list(long_path = true)
               @filenames_list.text = ""
-              @longpath_filelist.each { |file| @filenames_list.text += file + "\n" }
+              @longnames_files.each { |file| @filenames_list.text += file + "\n" }
               # open editing window, start with first file
             end
             @filenames_list = edit_box
 
+            # delete this button eventually
             button "Editing Window" do
               @main_window.hide
               @editing_window = s.editing_window(foobar)
@@ -113,7 +114,8 @@ class ManyFileEditor
     # one by one editing each
 
     # having two variable names for the same thing
-    file_list = @file_list #["/first/file_name", "/second/file_name"]
+
+    file_list = @shortnames_files #["/first/file_name", "/second/file_name"]
 
     # perhaps in file_text start with first file in file_list
     # @file_list.each { |file| puts File.read(dirname + file) }
