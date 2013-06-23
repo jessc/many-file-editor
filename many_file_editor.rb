@@ -55,9 +55,6 @@ class ManyFileEditor
           # use Ruby's substitute to change the near_filenames, perhaps?
           # apply regex to @file_list with Ruby's .scan, perhaps?
 
-          # glob the list of files at folder_location
-          # @file_list = get_file_list(folder_location)
-
           # open the files in @file_list
 
           stack :width => '49%' do
@@ -154,11 +151,13 @@ class ManyFileEditor
   end
 
   def get_file_list(folder_location, long_path = false)
-    folder_location = "/Users/jessc/Documents/Dropbox/leaf/useful/code/many-file-editor/file_examples/"
-      @file_list = Dir.entries(folder_location).select { |f| File.file?(folder_location + "#{f}") }
-      if long_path
-        @file_list.map! { |f| f = folder_location + "#{f}" }
-      end
+    unless folder_location != nil
+      folder_location = "/Users/jessc/Documents/Dropbox/leaf/useful/code/many-file-editor/file_examples/"
+    end
+    @file_list = Dir.entries(folder_location).select { |f| File.file?(folder_location + "#{f}") }
+    if long_path
+      @file_list.map! { |f| f = folder_location + "#{f}" }
+    end
   end
 end
 
