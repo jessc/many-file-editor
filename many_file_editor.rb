@@ -109,13 +109,8 @@ class ManyFileEditor
     # open in write mode each file in @file_list
     # one by one editing each
 
-    # perhaps start by doing something like:
-    # remember to add @ at front
-    # eventually change code in this method back to
-    # @folder_location instead of just dirname, no point
     # having two variable names for the same thing
     file_list = @file_list #["/first/file_name", "/second/file_name"]
-    dirname = @folder_location
 
     # perhaps in file_text start with first file in file_list
     # @file_list.each { |file| puts File.read(dirname + file) }
@@ -125,13 +120,12 @@ class ManyFileEditor
       f = flow do
         
         cur_file_num = 0
+        # add @ to front of file_list
         current_file = para "Editing: " + file_list[cur_file_num]
 
         file_text = edit_box :margin => 10, :width => '98%', :height => 400 do
-          # figure out how to change text in this edit_box
-          # when the cur_file changes:
-          # file_text.text = file_list[cur_file_num]
         end
+        # add @ to front of file_list
         file_text.text = file_list[cur_file_num]
 
         button "Quit App" do
@@ -143,11 +137,13 @@ class ManyFileEditor
         end
         button "Previous File" do
           cur_file_num -= 1 unless cur_file_num == 0
+          # add @ to front of file_list
           current_file.text = "Editing: " + file_list[cur_file_num]
           file_text.text = file_list[cur_file_num]
         end
         button "Save File" do; end
         button "Next File" do
+          # add @ to front of file_list
           cur_file_num += 1 unless cur_file_num > file_list.length
           current_file.text = "Editing: " + file_list[cur_file_num]
           file_text.text = file_list[cur_file_num]
@@ -164,7 +160,6 @@ class ManyFileEditor
         @file_list.map! { |f| f = folder_location + "#{f}" }
       end
   end
-
 end
 
 Shoes.app :title => "Many File Editor" do
