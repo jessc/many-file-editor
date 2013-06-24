@@ -84,11 +84,16 @@ class ManyFileEditor
             end
 
             button "Open Files" do
+              # figure out why when the @main_window is hidden,
+              # the @shortnames_files becomes nil/""
+              alert @shortnames_files
+
               # open editing window, start with first file
               # DRY this switch_window code into a method
               @main_window.hide
               @editing_window = s.editing_window(foobar)
               @editing_window.show
+
             end
             @fixed_files_box = edit_box
 
@@ -110,6 +115,8 @@ class ManyFileEditor
     # file_list = @shortnames_files
 
     file_list = ["/first/file_name", "/second/file_name", "/third/file_name"]
+    # file_list = @shortnames_files
+    alert file_list
 
     # perhaps in file_text start with first file in file_list
     # @file_list.each { |file| puts File.read(dirname + file) }
