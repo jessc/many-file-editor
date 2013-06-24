@@ -113,9 +113,9 @@ class ManyFileEditor
     # open in write mode each file in @file_list
     # one by one editing each
 
-    # having two variable names for the same thing
+    # file_list = @shortnames_files
 
-    file_list = @shortnames_files #["/first/file_name", "/second/file_name"]
+    file_list = ["/first/file_name", "/second/file_name", "/third/file_name"]
 
     # perhaps in file_text start with first file in file_list
     # @file_list.each { |file| puts File.read(dirname + file) }
