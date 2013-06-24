@@ -82,13 +82,13 @@ class ManyFileEditor
             # button "Get File Names" do
             button "Short File Names" do
               @shortnames_files = s.get_file_list(long_path = false)
+              @longnames_files = s.get_file_list(long_path = true)
               @filenames_list.text = ""
               @shortnames_files.each { |file| @filenames_list.text += file + "\n" }
             end
 
             # button "Open Files" do
             button "Long File Names" do
-              @longnames_files = s.get_file_list(long_path = true)
               @filenames_list.text = ""
               @longnames_files.each { |file| @filenames_list.text += file + "\n" }
               # open editing window, start with first file
