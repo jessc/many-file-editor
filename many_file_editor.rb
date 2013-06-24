@@ -73,14 +73,14 @@ class ManyFileEditor
 
             para "\nFixed Filenames:"
             button "Paste" do
-              @filenames_list.text = self.clipboard
+              @fixed_files_box.text = self.clipboard
             end
             
             button "Get File Names" do
               @shortnames_files = s.get_file_list(long_path = false)
               @longnames_files = s.get_file_list(long_path = true)
-              @filenames_list.text = ""
-              @shortnames_files.each { |file| @filenames_list.text += file + "\n" }
+              @fixed_files_box.text = ""
+              @shortnames_files.each { |file| @fixed_files_box.text += file + "\n" }
             end
 
             button "Open Files" do
@@ -90,7 +90,7 @@ class ManyFileEditor
               @editing_window = s.editing_window(foobar)
               @editing_window.show
             end
-            @filenames_list = edit_box
+            @fixed_files_box = edit_box
 
             # delete this button eventually
             button "Editing Window" do
