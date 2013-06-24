@@ -79,19 +79,21 @@ class ManyFileEditor
               @filenames_list.text = self.clipboard
             end
             
-            # button "Get File Names" do
-            button "Short File Names" do
+            button "Get File Names" do
+            # button "Short File Names" do
               @shortnames_files = s.get_file_list(long_path = false)
               @longnames_files = s.get_file_list(long_path = true)
               @filenames_list.text = ""
               @shortnames_files.each { |file| @filenames_list.text += file + "\n" }
             end
 
-            # button "Open Files" do
-            button "Long File Names" do
-              @filenames_list.text = ""
-              @longnames_files.each { |file| @filenames_list.text += file + "\n" }
+            button "Open Files" do
+            # button "Long File Names" do
               # open editing window, start with first file
+              # DRY this switch_window code into a method
+              @main_window.hide
+              @editing_window = s.editing_window(foobar)
+              @editing_window.show
             end
             @filenames_list = edit_box
 
