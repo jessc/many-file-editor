@@ -50,12 +50,9 @@ class ManyFileEditor
           # end
           # @para = para ""
 
-
           # capture near_filenames with regex
           # use Ruby's substitute to change the near_filenames, perhaps?
           # apply regex to @file_list with Ruby's .scan, perhaps?
-
-          # open the files in @file_list
 
           stack :width => '49%' do
             para "Regex:"
@@ -80,7 +77,6 @@ class ManyFileEditor
             end
             
             button "Get File Names" do
-            # button "Short File Names" do
               @shortnames_files = s.get_file_list(long_path = false)
               @longnames_files = s.get_file_list(long_path = true)
               @filenames_list.text = ""
@@ -88,7 +84,6 @@ class ManyFileEditor
             end
 
             button "Open Files" do
-            # button "Long File Names" do
               # open editing window, start with first file
               # DRY this switch_window code into a method
               @main_window.hide
@@ -112,9 +107,6 @@ class ManyFileEditor
   end
 
   def editing_window(foobar)
-    # open in write mode each file in @file_list
-    # one by one editing each
-
     # file_list = @shortnames_files
 
     file_list = ["/first/file_name", "/second/file_name", "/third/file_name"]
@@ -127,12 +119,10 @@ class ManyFileEditor
       f = flow do
         
         cur_file_num = 0
-        # add @ to front of file_list
         current_file = para "Editing: " + file_list[cur_file_num]
 
         file_text = edit_box :margin => 10, :width => '98%', :height => 400 do
         end
-        # add @ to front of file_list
         file_text.text = file_list[cur_file_num]
 
         button "Quit App" do
@@ -144,13 +134,11 @@ class ManyFileEditor
         end
         button "Previous File" do
           cur_file_num -= 1 unless cur_file_num == 0
-          # add @ to front of file_list
           current_file.text = "Editing: " + file_list[cur_file_num]
           file_text.text = file_list[cur_file_num]
         end
         button "Save File" do; end
         button "Next File" do
-          # add @ to front of file_list
           cur_file_num += 1 unless cur_file_num > file_list.length
           current_file.text = "Editing: " + file_list[cur_file_num]
           file_text.text = file_list[cur_file_num]
