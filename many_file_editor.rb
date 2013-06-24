@@ -160,6 +160,13 @@ class ManyFileEditor
     f
   end
 
+  def switch_window(switch_to)
+    # add switching code here
+    if switch_to == "main_window"
+    elsif switch_to == "editing_window"
+    end
+  end
+
   def get_file_list(long_path = false)
     f_l = @folder_location
     unless f_l != nil
