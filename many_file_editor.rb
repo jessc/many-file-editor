@@ -85,13 +85,14 @@ class ManyFileEditor
 
             button "Open Files" do
               # figure out why when the @main_window is hidden,
-              # the @shortnames_files becomes nil/""
-              alert @shortnames_files
+              # the @shortnames_files becomes nil or ""
+              # one way to get around this is to pass in
+              # the variables to the window, but this seems hackish
 
               # open editing window, start with first file
               # DRY this switch_window code into a method
               @main_window.hide
-              @editing_window = s.editing_window(foobar)
+              @editing_window = s.editing_window(foobar, @shortnames_files)
               @editing_window.show
 
             end
@@ -100,7 +101,7 @@ class ManyFileEditor
             # delete this button eventually
             button "Editing Window" do
               @main_window.hide
-              @editing_window = s.editing_window(foobar)
+              @editing_window = s.editing_window(foobar, @shortnames_files)
               @editing_window.show
             end
             button "Quit App" do
@@ -111,11 +112,12 @@ class ManyFileEditor
     end
   end
 
-  def editing_window(foobar)
+  def editing_window(foobar, shortnames_files)
+    # this should work but for some reason it's not:
     # file_list = @shortnames_files
 
     file_list = ["/first/file_name", "/second/file_name", "/third/file_name"]
-    # file_list = @shortnames_files
+    file_list = shortnames_files
     alert file_list
 
     # perhaps in file_text start with first file in file_list
