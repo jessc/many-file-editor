@@ -118,7 +118,6 @@ class ManyFileEditor
 
     file_list = ["/first/file_name", "/second/file_name", "/third/file_name"]
     file_list = shortnames_files
-    alert file_list
 
     # perhaps in file_text start with first file in file_list
     # @file_list.each { |file| puts File.read(dirname + file) }
@@ -148,7 +147,7 @@ class ManyFileEditor
         end
         button "Save File" do; end
         button "Next File" do
-          cur_file_num += 1 unless cur_file_num > file_list.length
+          cur_file_num += 1 unless cur_file_num == file_list.length - 1
           current_file.text = "Editing: " + file_list[cur_file_num]
           file_text.text = file_list[cur_file_num]
         end
