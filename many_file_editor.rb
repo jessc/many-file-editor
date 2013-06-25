@@ -77,22 +77,22 @@ class ManyFileEditor
             end
             
             button "Get File Names" do
-              @shortnames_files = s.get_file_list(long_path = false)
-              @longnames_files = s.get_file_list(long_path = true)
+              @names_files = { :short => s.get_file_list(long_path = false),
+                               :long => s.get_file_list(long_path = true) }
               @fixed_files_box.text = ""
-              @shortnames_files.each { |file| @fixed_files_box.text += file + "\n" }
+              @names_files[:short].each { |file| @fixed_files_box.text += file + "\n" }
             end
 
             button "Open Files" do
               # figure out why when the @main_window is hidden,
-              # the @shortnames_files becomes nil or ""
+              # the @names_files becomes nil or ""
               # one way to get around this is to pass in
               # the variables to the window, but this seems hackish
 
               # open editing window, start with first file
               # DRY this switch_window code into a method
               @main_window.hide
-              @editing_window = s.editing_window(foobar, @shortnames_files)
+              @editing_window = s.editing_window(foobar, @names_files)
               @editing_window.show
 
             end
@@ -101,7 +101,7 @@ class ManyFileEditor
             # delete this button eventually
             button "Editing Window" do
               @main_window.hide
-              @editing_window = s.editing_window(foobar, @shortnames_files)
+              @editing_window = s.editing_window(foobar, @names_files)
               @editing_window.show
             end
             button "Quit App" do
@@ -112,12 +112,15 @@ class ManyFileEditor
     end
   end
 
-  def editing_window(foobar, shortnames_files)
+  def editing_window(foobar, names_files)
     # this should work but for some reason it's not:
     # file_list = @shortnames_files
 
     file_list = ["/first/file_name", "/second/file_name", "/third/file_name"]
-    file_list = shortnames_files
+
+    long_file_list = names_files[:long]
+    file_list = names_files[:short]
+    # file_list = shortnames_files
 
     # perhaps in file_text start with first file in file_list
     # @file_list.each { |file| puts File.read(dirname + file) }
