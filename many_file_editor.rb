@@ -167,6 +167,10 @@ class ManyFileEditor
   end
 
   def get_file_list(long_path = false)
+    # another bug:
+    # looks like @folder_location is not being sent across methods,
+    # because it's always setting f_l to the path
+
     f_l = @folder_location
     unless f_l != nil
       f_l = "/Users/jessc/Documents/Dropbox/leaf/useful/code/many-file-editor/file_examples/"
