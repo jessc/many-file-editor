@@ -134,7 +134,8 @@ class ManyFileEditor
 
         file_text = edit_box :margin => 10, :width => '98%', :height => 400 do
         end
-        file_text.text = long_file_list[cur_file_num]
+        current_file_long_name = long_file_list[cur_file_num]
+        file_text.text = File.open(current_file_long_name, mode="r+").read
 
         button "Quit App" do
           quit
@@ -146,13 +147,15 @@ class ManyFileEditor
         button "Previous File" do
           cur_file_num -= 1 unless cur_file_num == 0
           current_file_name.text = "Editing: " + file_list[cur_file_num]
-          file_text.text = long_file_list[cur_file_num]
+          current_file_long_name = long_file_list[cur_file_num]
+          file_text.text = File.open(current_file_long_name, mode="r+").read
         end
         button "Save File" do; end
         button "Next File" do
           cur_file_num += 1 unless cur_file_num == file_list.length - 1
           current_file_name.text = "Editing: " + file_list[cur_file_num]
-          file_text.text = long_file_list[cur_file_num]
+          current_file_long_name = long_file_list[cur_file_num]
+          file_text.text = File.open(current_file_long_name, mode="r+").read
         end
       end
     end
