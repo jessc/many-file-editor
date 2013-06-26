@@ -88,7 +88,7 @@ class ManyFileEditor
 
               button "Open Files" do
                 # Figure out why when the @main_window is hidden,
-                # the @names_files becomes nil or "".
+                # the @names_files variable becomes nil or "".
                 # One way to get around this is to pass in
                 # the variables to the window, but this seems hackish
 
@@ -114,8 +114,6 @@ class ManyFileEditor
   def editing_window(foobar, names_files)
     # this should work but for some reason it's not:
     # file_list = @shortnames_files
-
-    file_list = ["/first/file_name", "/second/file_name", "/third/file_name"]
 
     long_file_list = names_files[:long]
     file_list = names_files[:short]
