@@ -141,13 +141,13 @@ class ManyFileEditor
           @editing_window.hide()
           @main_window.show()
         end
+        button "Save File" do; end
         button "Previous File" do
           cur_file_num -= 1 unless cur_file_num == 0
           current_file_name.text = "Editing: " + file_list[cur_file_num]
           current_file_long_name = long_file_list[cur_file_num]
           file_text.text = File.open(current_file_long_name, mode="r+").read
         end
-        button "Save File" do; end
         button "Next File" do
           cur_file_num += 1 unless cur_file_num == file_list.length - 1
           current_file_name.text = "Editing: " + file_list[cur_file_num]
@@ -168,11 +168,12 @@ class ManyFileEditor
 
   def get_file_list(long_path = false)
     # another bug:
-    # looks like @folder_location is not being sent across methods,
-    # because it's always setting f_l to the path
-
+    # Looks like @folder_location is not being sent across methods,
+    # because it's always setting f_l to the path.
+    # May be able to pass in folder_location variable
+    # into method, then set f_l to that variable.
     f_l = @folder_location
-    unless f_l != nil
+    if f_l == nil
       f_l = "/Users/jessc/Documents/Dropbox/leaf/useful/code/many-file-editor/file_examples/"
     end
     @file_list = Dir.entries(f_l).select { |f| File.file?(f_l + "#{f}") }
