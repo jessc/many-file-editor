@@ -71,11 +71,13 @@ class ManyFileEditor
             end
             @r_sub = edit_line
 
-            para "\nFixed Filenames:"
-            button "Paste" do
-              @fixed_files_box.text = self.clipboard
+            flow do
+              para "\nFixed Filenames:"
+              button "Paste" do
+                @fixed_files_box.text = self.clipboard
+              end
             end
-            
+
             button "Get File Names" do
               @names_files = { :short => s.get_file_list(long_path = false),
                                :long => s.get_file_list(long_path = true) }
@@ -99,12 +101,6 @@ class ManyFileEditor
             end
             @fixed_files_box = edit_box
 
-            # delete this button eventually
-            button "Editing Window" do
-              @main_window.hide
-              @editing_window = s.editing_window(foobar, @names_files)
-              @editing_window.show
-            end
             button "Quit App" do
               quit
             end
