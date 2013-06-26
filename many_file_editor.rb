@@ -91,10 +91,11 @@ class ManyFileEditor
 
               # open editing window, start with first file
               # DRY this switch_window code into a method
-              @main_window.hide
-              @editing_window = s.editing_window(foobar, @names_files)
-              @editing_window.show
-
+              if @names_files
+                @main_window.hide
+                @editing_window = s.editing_window(foobar, @names_files)
+                @editing_window.show
+              end
             end
             @fixed_files_box = edit_box
 
