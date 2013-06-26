@@ -41,20 +41,11 @@ class ManyFileEditor
             end
             @near_filenames = edit_box
 
-            @para_folder_loc = para "\n"
-          end
+            @para_folder_loc = para "\n", :size => 8
 
-          # example of how to use .text:
-          # @folder_location = edit_line do
-          #   @para.text = @folder_location.text
-          # end
-          # @para = para ""
-
-          # capture near_filenames with regex
-          # use Ruby's substitute to change the near_filenames, perhaps?
-          # apply regex to @file_list with Ruby's .scan, perhaps?
-
-          stack :width => '49%' do
+            # capture near_filenames with regex
+            # use Ruby's substitute to change the near_filenames, perhaps?
+            # apply regex to @file_list with Ruby's .scan, perhaps?
             para "Regex:"
             button "Apply Regex" do; end
             @regex = edit_line
@@ -70,6 +61,15 @@ class ManyFileEditor
               button "Apply" do; end
             end
             @r_sub = edit_line
+          end
+
+          # example of how to use .text:
+          # @folder_location = edit_line do
+          #   @para.text = @folder_location.text
+          # end
+          # @para = para ""
+
+          stack :width => '49%' do
 
             flow do
               para "\nFixed Filenames:"
@@ -78,28 +78,30 @@ class ManyFileEditor
               end
             end
 
-            button "Get File Names" do
-              @names_files = { :short => s.get_file_list(long_path = false),
-                               :long => s.get_file_list(long_path = true) }
-              @fixed_files_box.text = ""
-              @names_files[:short].each { |file| @fixed_files_box.text += file + "\n" }
-            end
-
-            button "Open Files" do
-              # Figure out why when the @main_window is hidden,
-              # the @names_files becomes nil or "".
-              # One way to get around this is to pass in
-              # the variables to the window, but this seems hackish
-
-              # open editing window, start with first file
-              # DRY this switch_window code into a method
-              if @names_files
-                @main_window.hide
-                @editing_window = s.editing_window(foobar, @names_files)
-                @editing_window.show
+            flow do
+              button "Get File Names" do
+                @names_files = { :short => s.get_file_list(long_path = false),
+                                 :long => s.get_file_list(long_path = true) }
+                @fixed_files_box.text = ""
+                @names_files[:short].each { |file| @fixed_files_box.text += file + "\n" }
               end
+
+              button "Open Files" do
+                # Figure out why when the @main_window is hidden,
+                # the @names_files becomes nil or "".
+                # One way to get around this is to pass in
+                # the variables to the window, but this seems hackish
+
+                # open editing window, start with first file
+                # DRY this switch_window code into a method
+                if @names_files
+                  @main_window.hide
+                  @editing_window = s.editing_window(foobar, @names_files)
+                  @editing_window.show
+                end
+              end
+              @fixed_files_box = edit_box
             end
-            @fixed_files_box = edit_box
 
             button "Quit App" do
               quit
