@@ -84,9 +84,9 @@ class ManyFileEditor
             end
 
             button "Open Files" do
-              # figure out why when the @main_window is hidden,
-              # the @names_files becomes nil or ""
-              # one way to get around this is to pass in
+              # Figure out why when the @main_window is hidden,
+              # the @names_files becomes nil or "".
+              # One way to get around this is to pass in
               # the variables to the window, but this seems hackish
 
               # open editing window, start with first file
@@ -134,7 +134,7 @@ class ManyFileEditor
 
         file_text = edit_box :margin => 10, :width => '98%', :height => 400 do
         end
-        file_text.text = file_list[cur_file_num]
+        file_text.text = long_file_list[cur_file_num]
 
         button "Quit App" do
           quit
@@ -146,13 +146,13 @@ class ManyFileEditor
         button "Previous File" do
           cur_file_num -= 1 unless cur_file_num == 0
           current_file.text = "Editing: " + file_list[cur_file_num]
-          file_text.text = file_list[cur_file_num]
+          file_text.text = long_file_list[cur_file_num]
         end
         button "Save File" do; end
         button "Next File" do
           cur_file_num += 1 unless cur_file_num == file_list.length - 1
           current_file.text = "Editing: " + file_list[cur_file_num]
-          file_text.text = file_list[cur_file_num]
+          file_text.text = long_file_list[cur_file_num]
         end
       end
     end
