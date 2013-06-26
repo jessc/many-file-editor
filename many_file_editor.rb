@@ -130,7 +130,7 @@ class ManyFileEditor
       f = flow do
         
         cur_file_num = 0
-        current_file = para "Editing: " + file_list[cur_file_num]
+        current_file_name = para "Editing: " + file_list[cur_file_num]
 
         file_text = edit_box :margin => 10, :width => '98%', :height => 400 do
         end
@@ -145,13 +145,13 @@ class ManyFileEditor
         end
         button "Previous File" do
           cur_file_num -= 1 unless cur_file_num == 0
-          current_file.text = "Editing: " + file_list[cur_file_num]
+          current_file_name.text = "Editing: " + file_list[cur_file_num]
           file_text.text = long_file_list[cur_file_num]
         end
         button "Save File" do; end
         button "Next File" do
           cur_file_num += 1 unless cur_file_num == file_list.length - 1
-          current_file.text = "Editing: " + file_list[cur_file_num]
+          current_file_name.text = "Editing: " + file_list[cur_file_num]
           file_text.text = long_file_list[cur_file_num]
         end
       end
