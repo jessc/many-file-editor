@@ -134,7 +134,8 @@ class ManyFileEditor
         file_text = edit_box :margin => 10, :width => '98%', :height => 400 do
         end
         current_file_long_name = long_file_list[cur_file_num]
-        file_text.text = File.open(current_file_long_name, mode="r+").read
+        cur_file = File.open(current_file_long_name, mode="r+")
+        file_text.text = cur_file.read
 
         button "Quit App" do
           quit
@@ -143,18 +144,28 @@ class ManyFileEditor
           @editing_window.hide()
           @main_window.show()
         end
-        button "Save File" do; end
+        button "Save File" do
+          # bug: for some reason even when the file_text text is written,
+          # it's not saving to the current file.
+          cur_file.write(file_text.text).close
+          alert file_text.text
+          cur_file = File.open(current_file_long_name, mode="r+")
+          file_text.text = cur_file.read
+          # file_text.text = "asdsa" + cur_file.read
+        end
         button "Previous File" do
           cur_file_num -= 1 unless cur_file_num == 0
           current_file_name.text = "Editing: " + file_list[cur_file_num]
           current_file_long_name = long_file_list[cur_file_num]
-          file_text.text = File.open(current_file_long_name, mode="r+").read
+          cur_file = File.open(current_file_long_name, mode="r+")
+          file_text.text = cur_file.read
         end
         button "Next File" do
           cur_file_num += 1 unless cur_file_num == file_list.length - 1
           current_file_name.text = "Editing: " + file_list[cur_file_num]
           current_file_long_name = long_file_list[cur_file_num]
-          file_text.text = File.open(current_file_long_name, mode="r+").read
+          cur_file = File.open(current_file_long_name, mode="r+")
+          file_text.text = cur_file.read
         end
       end
     end
@@ -176,7 +187,6 @@ class ManyFileEditor
     # into method, then set f_l to that variable.
     # f_l = @folder_location
     f_l = folder_location
-    alert f_l
     if f_l == nil
       f_l = "/Users/jessc/Documents/Dropbox/leaf/useful/code/many-file-editor/file_examples/"
     end
