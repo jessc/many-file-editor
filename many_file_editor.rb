@@ -145,13 +145,10 @@ class ManyFileEditor
           @main_window.show()
         end
         button "Save File" do
-          # bug: for some reason even when the file_text text is written,
-          # it's not saving to the current file.
-          cur_file.write(file_text.text).close
-          alert file_text.text
+          cur_file = File.open(current_file_long_name, mode="w")
+          cur_file.write(file_text.text)
+          cur_file.close
           cur_file = File.open(current_file_long_name, mode="r+")
-          file_text.text = cur_file.read
-          # file_text.text = "asdsa" + cur_file.read
         end
         button "Previous File" do
           cur_file_num -= 1 unless cur_file_num == 0
