@@ -130,6 +130,7 @@ class ManyFileEditor
         
         cur_file_num = 0
         current_file_name = para "Editing: " + file_list[cur_file_num]
+        file_saved = para "", :size => 8
 
         file_text = edit_box :margin => 10, :width => '98%', :height => 400 do
         end
@@ -149,8 +150,10 @@ class ManyFileEditor
           cur_file.write(file_text.text)
           cur_file.close
           cur_file = File.open(current_file_long_name, mode="r+")
+          file_saved.text = "     File Saved"
         end
         button "Previous File" do
+          file_saved.text = ""
           cur_file_num -= 1 unless cur_file_num == 0
           current_file_name.text = "Editing: " + file_list[cur_file_num]
           current_file_long_name = long_file_list[cur_file_num]
@@ -158,6 +161,7 @@ class ManyFileEditor
           file_text.text = cur_file.read
         end
         button "Next File" do
+          file_saved.text = ""
           cur_file_num += 1 unless cur_file_num == file_list.length - 1
           current_file_name.text = "Editing: " + file_list[cur_file_num]
           current_file_long_name = long_file_list[cur_file_num]
