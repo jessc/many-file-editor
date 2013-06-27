@@ -26,7 +26,7 @@ class ManyFileEditor
           stack :width => '49%' do
 
             button "Choose Folder with Files" do
-              @folder_location = ask_open_folder
+              @folder_location = ask_open_folder + "/"
               @para_folder_loc.text = @folder_location
             end
 
@@ -80,8 +80,10 @@ class ManyFileEditor
 
             flow do
               button "Get File Names" do
-                @names_files = { :short => s.get_file_list(long_path = false),
-                                 :long => s.get_file_list(long_path = true) }
+                @names_files = { :short =>
+                                 s.get_file_list(long_path = false, @folder_location),
+                                 :long =>
+                                 s.get_file_list(long_path = true, @folder_location) }
                 @fixed_files_box.text = ""
                 @names_files[:short].each { |file| @fixed_files_box.text += file + "\n" }
               end
@@ -166,13 +168,15 @@ class ManyFileEditor
     end
   end
 
-  def get_file_list(long_path = false)
+  def get_file_list(long_path = false, folder_location)
     # another bug:
     # Looks like @folder_location is not being sent across methods,
     # because it's always setting f_l to the path.
     # May be able to pass in folder_location variable
     # into method, then set f_l to that variable.
-    f_l = @folder_location
+    # f_l = @folder_location
+    f_l = folder_location
+    alert f_l
     if f_l == nil
       f_l = "/Users/jessc/Documents/Dropbox/leaf/useful/code/many-file-editor/file_examples/"
     end
