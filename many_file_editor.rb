@@ -28,6 +28,8 @@ class ManyFileEditor
             para "Near-Filenames:"
             flow do
               button "Open File" do
+                filename = ask_open_file
+                @near_filenames.text = File.read(filename)
               end
               button "Copy" do
                 self.clipboard = @near_filenames.text
@@ -114,11 +116,10 @@ class ManyFileEditor
 
   def editing_window(foobar, names_files)
     # this should work but for some reason it's not:
-    # file_list = @shortnames_files
+    # file_list = @names_files
 
     long_file_list = names_files[:long]
     file_list = names_files[:short]
-    # file_list = shortnames_files
 
     # perhaps in file_text start with first file in file_list
     # @file_list.each { |file| puts File.read(dirname + file) }
