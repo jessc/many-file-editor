@@ -114,7 +114,7 @@ class ManyFileEditor
                 @fixed_files_box.text = self.clipboard
               end
             end
-            button "Quit App" do
+            button "Quit App", {:right => 0, :bottom => 0} do
               quit
             end
           end
