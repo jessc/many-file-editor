@@ -26,6 +26,7 @@ class ManyFileEditor
           stack :width => '49%' do
 
             para "Near-Filenames:"
+            @near_filenames = edit_box :width => '90%', :height => 150
             flow do
               button "Open File" do
                 filename = ask_open_file
@@ -38,16 +39,16 @@ class ManyFileEditor
                 @near_filenames.text = self.clipboard
               end
             end
-            @near_filenames = edit_box :width => '90%', :height => 150
 
             # capture near_filenames with regex
             # use Ruby's substitute to change the near_filenames, perhaps?
             # apply regex to @file_list with Ruby's .scan, perhaps?
             para "Regex:"
-            button "Apply Regex" do; end
             @regex = edit_line
+            button "Apply Regex" do; end
 
             para "Ruby Substitution:"
+            @r_sub = edit_line
             flow do
               button "Copy" do
                 self.clipboard = @r_sub.text
@@ -57,7 +58,6 @@ class ManyFileEditor
               end
               button "Apply" do; end
             end
-            @r_sub = edit_line
           end
           
           stack :width => '49%' do
@@ -68,8 +68,9 @@ class ManyFileEditor
             end
             @para_folder_loc = para "No folder chosen yet.", :size => 8
 
-            flow do
+            stack do
               para "\nFixed Names:"
+              @fixed_files_box = edit_box :width => '90%', :height => 150
             end
 
             # Eventually this button will be deleted,
@@ -104,7 +105,6 @@ class ManyFileEditor
               button "Paste" do
                 @fixed_files_box.text = self.clipboard
               end
-              @fixed_files_box = edit_box :width => '90%', :height => 150
             end
             button "Quit App" do
               quit
