@@ -199,7 +199,7 @@ class ManyFileEditor
   end
 end
 
-Shoes.app :title => "Many File Editor" do
+Shoes.app :title => "Many File Editor", :width => 700, :height => 525 do
   @many_file_editor = ManyFileEditor.new(self)
 end
 
