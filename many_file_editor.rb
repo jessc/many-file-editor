@@ -29,6 +29,7 @@ class ManyFileEditor
               @folder_location = ask_open_folder + "/"
               @para_folder_loc.text = @folder_location
             end
+            @para_folder_loc = para "No folder chosen yet.", :size => 8
 
             para "Near-Filenames:"
             flow do
@@ -39,9 +40,7 @@ class ManyFileEditor
                 @near_filenames.text = self.clipboard
               end
             end
-            @near_filenames = edit_box
-
-            @para_folder_loc = para "\n", :size => 8
+            @near_filenames = edit_box :width => '90%', :height => 150
 
             # capture near_filenames with regex
             # use Ruby's substitute to change the near_filenames, perhaps?
@@ -50,7 +49,7 @@ class ManyFileEditor
             button "Apply Regex" do; end
             @regex = edit_line
 
-            para "\nRuby Substitution:"
+            para "Ruby Substitution:"
             flow do
               button "Copy" do
                 self.clipboard = @r_sub.text
@@ -102,7 +101,7 @@ class ManyFileEditor
                   @editing_window.show
                 end
               end
-              @fixed_files_box = edit_box
+              @fixed_files_box = edit_box :width => '90%', :height => 150
             end
 
             button "Quit App" do
