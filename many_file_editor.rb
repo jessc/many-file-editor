@@ -28,15 +28,15 @@ class ManyFileEditor
             para "Near-Filenames:"
             @near_filenames = edit_box :width => '90%', :height => 150
             flow do
-              button "Open File" do
-                filename = ask_open_file
-                @near_filenames.text = File.read(filename)
-              end
               button "Copy" do
                 self.clipboard = @near_filenames.text
               end
               button "Paste" do
                 @near_filenames.text = self.clipboard
+              end
+              button "Open File" do
+                filename = ask_open_file
+                @near_filenames.text = File.read(filename)
               end
             end
 
@@ -45,7 +45,15 @@ class ManyFileEditor
             # apply regex to @file_list with Ruby's .scan, perhaps?
             para "Regex:"
             @regex = edit_line
-            button "Apply Regex" do; end
+            flow do
+              button "Copy" do
+                self.clipboard = @regex.text
+              end
+              button "Paste" do
+                @regex.text = self.clipboard
+              end
+              button "Apply" do; end
+            end
 
             para "Ruby Substitution:"
             @r_sub = edit_line
