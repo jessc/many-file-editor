@@ -3,7 +3,7 @@ Timestamp: 2012-12-23 16:17:42 +0000
 Created: 2012-12-23 16:17:42 +0000
 Last Accessed: 2012-12-23 16:17:45 +0000
 Times Accessed: 1
-Tags: 
+Tags:
 Metadata: gpslongitude=-97.696155,gpslatitude=30.656142
 
 

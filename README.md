@@ -39,6 +39,29 @@ Editing Window:
 
 ![editing_window](./images/editing_window.png?raw=true)
 
+
+## Examples
+### Pasted in text:
+pasted = <<HEREDOC
+ * [[bk_BeyondQuantumTheory|Beyond Quantum Theory]]
+ * [[bk_RememberWholesale|We Can Remember It For You Wholesale]]
+ * [[bk_TranscentionHypothesis|Transcention Hypothesis]]
+HEREDOC
+
+### Regex Match Used:
+captured = pasted.scan(/(bk_\w+)/)
+puts captured
+
+### Folder with Files:
+/path/file_examples/
+
+### Desired output:
+bk_BeyondQuantumTheory.markdown
+bk_RememberWholesale.markdown
+bk_TranscentionHypothesis.markdown
+
+
+
 ## Contributing
 
  - add features
