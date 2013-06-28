@@ -25,14 +25,10 @@ class ManyFileEditor
         flow :margin => 10, :width => '98%' do 
           stack :width => '49%' do
 
-            button "Choose Folder with Files" do
-              @folder_location = ask_open_folder + "/"
-              @para_folder_loc.text = @folder_location
-            end
-            @para_folder_loc = para "No folder chosen yet.", :size => 8
-
             para "Near-Filenames:"
             flow do
+              button "Open File" do
+              end
               button "Copy" do
                 self.clipboard = @near_filenames.text
               end
@@ -70,15 +66,23 @@ class ManyFileEditor
 
           stack :width => '49%' do
 
-            flow do
-              para "\nFixed Filenames:"
-              button "Paste" do
-                @fixed_files_box.text = self.clipboard
-              end
+            button "Location of Files" do
+              @folder_location = ask_open_folder + "/"
+              @para_folder_loc.text = @folder_location
             end
+            @para_folder_loc = para "No folder chosen yet.", :size => 8
 
             flow do
-              button "Get File Names" do
+              para "\nFixed Names:"
+            end
+
+            # Eventually this button will be deleted,
+            # because the user flow will be
+            # input near-filenames and folder location
+            # apply Ruby substitution, put that in fixed_files_box
+            # Open Files button to open each file
+            flow do
+              button "Get Names" do
                 @names_files = { :short =>
                                  s.get_file_list(long_path = false, @folder_location),
                                  :long =>
@@ -101,9 +105,11 @@ class ManyFileEditor
                   @editing_window.show
                 end
               end
+              button "Paste" do
+                @fixed_files_box.text = self.clipboard
+              end
               @fixed_files_box = edit_box :width => '90%', :height => 150
             end
-
             button "Quit App" do
               quit
             end
