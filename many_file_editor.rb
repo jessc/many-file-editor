@@ -26,6 +26,8 @@ class ManyFileEditor
           stack :width => '49%' do
 
             para "Near-Filenames:"
+            # for some reason when you increase the :height it
+            # throws off the Quit App button at the bottom of the rightside?
             @near_filenames = edit_box :width => '90%', :height => 150
             flow do
               button "Copy" do
@@ -78,7 +80,7 @@ class ManyFileEditor
 
             stack do
               para "\nFixed Names:"
-              @fixed_files_box = edit_box :width => '90%', :height => 150
+              @fixed_files_box = edit_box :width => '90%', :height => 275
             end
 
             # Eventually this button will be deleted,
