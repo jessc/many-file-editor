@@ -57,13 +57,7 @@ class ManyFileEditor
             end
             @r_sub = edit_line
           end
-
-          # example of how to use .text:
-          # @folder_location = edit_line do
-          #   @para.text = @folder_location.text
-          # end
-          # @para = para ""
-
+          
           stack :width => '49%' do
 
             button "Location of Files" do
