@@ -72,16 +72,13 @@ HEREDOC
               end
             end
 
-            para "Ruby Substitution:"
-            @r_sub = edit_line
-            flow do
-              button "Copy" do
-                self.clipboard = @r_sub.text
+            para "Add File Extension:"
+            @file_extension = edit_line
+            button "Apply" do
+              if @fixed_files_box.text != ""
+                # placeholder code
+                alert "worked"
               end
-              button "Paste" do
-                @r_sub.text = self.clipboard
-              end
-              button "Apply" do; end
             end
           end
           
