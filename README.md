@@ -49,7 +49,7 @@ pasted = <<HEREDOC
 HEREDOC
 
 ### Regex Match Used:
-captured = pasted.scan(/(bk_\w+)/)
+captured = pasted.scan(/(bk_\w+)/).flatten
 puts captured
 
 ### Folder with Files:

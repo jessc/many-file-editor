@@ -47,6 +47,7 @@ class ManyFileEditor
             # apply regex to @file_list with Ruby's .scan, perhaps?
             para "Regex:"
             @regex = edit_line
+            @regex.text = "/put_regex_here/"
             flow do
               button "Copy" do
                 self.clipboard = @regex.text
@@ -54,7 +55,8 @@ class ManyFileEditor
               button "Paste" do
                 @regex.text = self.clipboard
               end
-              button "Apply" do; end
+              button "Apply" do
+              end
             end
 
             para "Ruby Substitution:"
@@ -76,10 +78,10 @@ class ManyFileEditor
               @folder_location = ask_open_folder + "/"
               @para_folder_loc.text = @folder_location
             end
-            @para_folder_loc = para "No folder chosen yet.", :size => 8
+            @para_folder_loc = para "No folder chosen yet.\n", :size => 8
 
             stack do
-              para "\nFixed Names:"
+              para "Fixed Names:"
               @fixed_files_box = edit_box :width => '90%', :height => 275
             end
 
