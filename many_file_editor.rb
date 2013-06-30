@@ -47,7 +47,7 @@ class ManyFileEditor
             # apply regex to @file_list with Ruby's .scan, perhaps?
             para "Regex:"
             @regex = edit_line
-            @regex.text = "/put_regex_here/"
+            @regex.text = '/(bk_\w+)/'
             flow do
               button "Copy" do
                 self.clipboard = @regex.text
@@ -57,7 +57,14 @@ class ManyFileEditor
               end
               button "Apply" do
                 if @near_filenames.text
-                  applied_regex = @near_filenames.text.scan(/(bk_\w+)/).flatten
+                  regex_to_use = Regexp.new @regex.text
+
+                  # debugging code
+                  # for some reason the regex is always "(?-\/(bk_\w+)\/)"
+                  # why is this?
+                  para regex_to_use
+
+                  applied_regex = @near_filenames.text.scan(regex_to_use).flatten
                   caught_filenames = ""
                   applied_regex.each { |file| caught_filenames += file + "\n" }
                   @fixed_files_box.text = caught_filenames
