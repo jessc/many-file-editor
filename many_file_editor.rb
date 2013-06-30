@@ -69,11 +69,15 @@ class ManyFileEditor
             para "Add File Extension:"
             @file_extension = edit_line
             button "Apply" do
-              if @fixed_files_box.text != ""
-                # placeholder code
-                alert "worked"
+              if @file_extension.text != ""
+                extension = @file_extension.text
+                old_text = @fixed_files_box.text
+                replacement_text = ""
+                old_text.each_line { |line| replacement_text += line.chomp + extension + "\n" }
+                @fixed_files_box.text = replacement_text
               end
             end
+            # debug: clear file extension if it's already been applied
           end
           
           stack :width => '49%' do
