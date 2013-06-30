@@ -79,7 +79,6 @@ class ManyFileEditor
                 applied_already = true
               end
             end
-            # debug: add clear fixed_files_box button
           end
           
           stack :width => '49%' do
@@ -126,6 +125,9 @@ class ManyFileEditor
               end
               button "Paste" do
                 @fixed_files_box.text = self.clipboard
+              end
+              button "Clear Box" do
+                @fixed_files_box.text = ""
               end
             end
             button "Quit App", {:right => 0, :bottom => 0} do
