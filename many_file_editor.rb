@@ -56,15 +56,8 @@ class ManyFileEditor
                 @regex.text = self.clipboard
               end
               button "Apply" do
-                # placeholder code
-                @near_filenames = <<HEREDOC
- * [[bk_BeyondQuantumTheory|Beyond Quantum Theory]]
- * [[bk_RememberWholesale|We Can Remember It For You Wholesale]]
- * [[bk_TranscentionHypothesis|Transcention Hypothesis]]
-HEREDOC
-
-                if @near_filenames
-                  applied_regex = @near_filenames.scan(/(bk_\w+)/).flatten
+                if @near_filenames.text
+                  applied_regex = @near_filenames.text.scan(/(bk_\w+)/).flatten
                   caught_filenames = ""
                   applied_regex.each { |file| caught_filenames += file + "\n" }
                   @fixed_files_box.text = caught_filenames
