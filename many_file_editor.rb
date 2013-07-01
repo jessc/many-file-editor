@@ -73,6 +73,8 @@ class ManyFileEditor
               unless @file_extension.text == "" || applied_already
                 extension = @file_extension.text
                 old_text = @fixed_files_box.text
+
+                # perhaps use .map! here to edit lines inplace
                 replacement_text = ""
                 old_text.each_line { |line| replacement_text += line.chomp + extension + "\n" }
                 @fixed_files_box.text = replacement_text
@@ -110,6 +112,13 @@ class ManyFileEditor
               end
 
               button "Open Files" do
+                f_l = @folder_location
+                fixed = @fixed_files_box.text
+                # change this names_files to work with [:long] and [:short]
+                # set [:short] to use the names from fixed, then
+                # set [:long] to use the folder + [:short] names
+                @names_files = fixed.map { |line| line = f_l + line }
+
                 # Figure out why when the @main_window is hidden,
                 # the @names_files variable becomes nil or "".
                 # One way to get around this is to pass in
@@ -142,6 +151,7 @@ class ManyFileEditor
     # this should work but for some reason it's not:
     # file_list = @names_files
 
+    # change this names_files to work with [:long] and [:short]
     long_file_list = names_files[:long]
     file_list = names_files[:short]
 
@@ -212,6 +222,7 @@ class ManyFileEditor
     # into method, then set f_l to that variable.
     # f_l = @folder_location
     f_l = folder_location
+    # alert f_l
     if f_l == nil
       f_l = "/Users/jessc/Documents/Dropbox/leaf/useful/code/many-file-editor/file_examples/"
     end
