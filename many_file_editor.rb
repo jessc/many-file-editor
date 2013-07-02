@@ -78,6 +78,8 @@ class ManyFileEditor
                 replacement_text = ""
                 old_text.each_line { |line| replacement_text += line.chomp + extension + "\n" }
                 @fixed_files_box.text = replacement_text
+                # when switching back to the main window from the edit window,
+                # turn applied_already back to false
                 applied_already = true
               end
             end
@@ -114,13 +116,9 @@ class ManyFileEditor
               button "Open Files" do
                 f_l = @folder_location
                 fixed = @fixed_files_box.text.split("\n")
-                # change this names_files to work with [:long] and [:short]
-                # set [:short] to use the names from fixed, then
-                # set [:long] to use the folder + [:short] names
-                # @names_files = {}
-                # @names_files[:short] = fixed.map { |line| line }
-                # @names_files[:long] = fixed.map { |line| line = f_l + line }
-                @names_files = fixed.map { |line| line = f_l + line }
+                @names_files = {}
+                @names_files[:short] = fixed
+                @names_files[:long] = fixed.map { |line| line = f_l + line }
 
                 # Figure out why when the @main_window is hidden,
                 # the @names_files variable becomes nil or "".
