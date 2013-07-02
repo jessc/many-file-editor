@@ -42,9 +42,6 @@ class ManyFileEditor
               end
             end
 
-            # capture near_filenames with regex
-            # use Ruby's substitute to change the near_filenames, perhaps?
-            # apply regex to @file_list with Ruby's .scan, perhaps?
             para "Regex:"
             @regex = edit_line
             @regex.text = '(bk_\w+)'
@@ -135,15 +132,12 @@ class ManyFileEditor
   end
 
   def editing_window(foobar, names_files)
-    # this should work but for some reason it's not:
+    # bug:
+    # Why is @names_files not being sent across methods?
     # file_list = @names_files
 
-    # change this names_files to work with [:long] and [:short]
     long_file_list = names_files[:long]
     file_list = names_files[:short]
-
-    # perhaps in file_text start with first file in file_list
-    # @file_list.each { |file| puts File.read(dirname + file) }
 
     f = nil
     foobar.app do
@@ -202,7 +196,7 @@ class ManyFileEditor
   end
 
   def get_file_list(long_path = false, folder_location)
-    # another bug:
+    # bug:
     # For some reason @folder_location is not being sent across methods?
     # So instead have to pass in variable and set f_l to that.
     # f_l = @folder_location
