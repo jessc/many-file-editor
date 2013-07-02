@@ -98,21 +98,7 @@ class ManyFileEditor
               @fixed_files_box = edit_box :width => '90%', :height => 275
             end
 
-            # Eventually this button will be deleted,
-            # because the user flow will be
-            # input near-filenames and folder location
-            # apply Ruby substitution, put that in fixed_files_box
-            # Open Files button to open each file
             flow do
-              button "Get Names" do
-                @names_files = { :short =>
-                                 s.get_file_list(long_path = false, @folder_location),
-                                 :long =>
-                                 s.get_file_list(long_path = true, @folder_location) }
-                @fixed_files_box.text = ""
-                @names_files[:short].each { |file| @fixed_files_box.text += file + "\n" }
-              end
-
               button "Open Files" do
                 f_l = @folder_location
                 fixed = @fixed_files_box.text.split("\n")
