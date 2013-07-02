@@ -119,9 +119,16 @@ class ManyFileEditor
               button "Paste" do
                 @fixed_files_box.text = self.clipboard
               end
-              button "Clear Box" do
-                @fixed_files_box.text = ""
-              end
+            end
+            button "Clear Program" do
+              @near_filenames.text = ""
+              @regex.text = '(bk_\w+)'
+              # bug:
+              # when @names_files is cleared and Open Files button is pressed,
+              # the Editing Window is blank
+              @names_files = {}
+              @fixed_files_box.text = ""
+              @file_extension.text = ""
             end
             button "Quit App", {:right => 0, :bottom => 0} do
               quit
