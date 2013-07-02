@@ -203,16 +203,10 @@ class ManyFileEditor
 
   def get_file_list(long_path = false, folder_location)
     # another bug:
-    # Looks like @folder_location is not being sent across methods,
-    # because it's always setting f_l to the path.
-    # May be able to pass in folder_location variable
-    # into method, then set f_l to that variable.
+    # For some reason @folder_location is not being sent across methods?
+    # So instead have to pass in variable and set f_l to that.
     # f_l = @folder_location
     f_l = folder_location
-    # alert f_l
-    if f_l == nil
-      f_l = "/Users/jessc/Documents/Dropbox/leaf/useful/code/many-file-editor/file_examples/"
-    end
     @file_list = Dir.entries(f_l).select { |f| File.file?(f_l + "#{f}") }
     if long_path
       @file_list.map! { |f| f = f_l + "#{f}" }
