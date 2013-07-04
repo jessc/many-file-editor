@@ -26,8 +26,6 @@ class ManyFileEditor
           stack :width => '49%' do
 
             para "Near-Filenames:"
-            # for some reason when you increase the :height it
-            # throws off the Quit App button at the bottom of the rightside?
             @near_filenames = edit_box :width => '90%', :height => 150
             flow do
               button "Copy" do
@@ -71,10 +69,12 @@ class ManyFileEditor
                 extension = @file_extension.text
                 old_text = @fixed_files_box.text
 
-                # perhaps use .map! here to edit lines inplace
+                # bug:
+                # use .map! here to edit lines inplace
                 replacement_text = ""
                 old_text.each_line { |line| replacement_text += line.chomp + extension + "\n" }
                 @fixed_files_box.text = replacement_text
+                # bug:
                 # when switching back to the main window from the edit window,
                 # turn applied_already back to false
                 applied_already = true
@@ -103,12 +103,13 @@ class ManyFileEditor
                 @names_files[:short] = fixed
                 @names_files[:long] = fixed.map { |line| line = f_l + line }
 
+                # bug:
                 # Figure out why when the @main_window is hidden,
                 # the @names_files variable becomes nil or "".
                 # One way to get around this is to pass in
                 # the variables to the window, but this seems hackish
 
-                # open editing window, start with first file
+                # bug:
                 # DRY this switch_window code into a method
                 if @names_files
                   @main_window.hide
@@ -167,6 +168,8 @@ class ManyFileEditor
           @editing_window.hide()
           @main_window.show()
         end
+        # bug:
+        # DRY this code
         button "Save File" do
           cur_file = File.open(current_file_long_name, mode="w")
           cur_file.write(file_text.text)
@@ -196,6 +199,7 @@ class ManyFileEditor
   end
 
   def switch_window(switch_to)
+    # bug:
     # add switching code here
     if switch_to == "main_window"
     elsif switch_to == "editing_window"
@@ -223,16 +227,6 @@ end
 
 
 =begin
-
-- put list of near-filenames in edit box
-- have a line for a regex to be run on the near-filenames, with an apply button
-- apply regex on each line, which outputs to the edit box to the right
-- clear window
-- open each filename
-  - edit box, previous/next/save buttons
-  - make sure Unicode works
-  - previous/next closes file, opens previous/next
-- exit button closes app
 
 
 =end
