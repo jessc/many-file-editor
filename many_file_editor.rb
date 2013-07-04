@@ -155,6 +155,9 @@ class ManyFileEditor
         current_file_name = para "Editing: " + file_list[cur_file_num]
         file_saved = para "", :size => 8
 
+        # bug:
+        # check that this edit_box will load/save
+        # correctly with UTF-8 characters
         file_text = edit_box :margin => 10, :width => '98%', :height => 400 do
         end
         current_file_long_name = long_file_list[cur_file_num]
@@ -200,7 +203,7 @@ class ManyFileEditor
 
   def switch_window(switch_to)
     # bug:
-    # add switching code here
+    # When DRYing, put switching code here
     if switch_to == "main_window"
     elsif switch_to == "editing_window"
     end
@@ -225,8 +228,7 @@ Shoes.app :title => "Many File Editor", :width => 700, :height => 525 do
 end
 
 
-
 =begin
 
-
 =end
+
