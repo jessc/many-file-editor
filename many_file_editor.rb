@@ -62,6 +62,8 @@ class ManyFileEditor
             end
 
             para "Add File Extension:"
+            # bug:
+            # perhaps add copy/paste buttons
             @file_extension = edit_line
             applied_already = false
             button "Apply" do
@@ -84,7 +86,7 @@ class ManyFileEditor
           
           stack :width => '49%' do
 
-            button "Location of Files" do
+            button "Choose Location of Files" do
               @folder_location = ask_open_folder + "/"
               @para_folder_loc.text = @folder_location
             end
@@ -96,6 +98,9 @@ class ManyFileEditor
             end
 
             flow do
+              # bug:
+              # when Open Files button is clicked without data
+              # it changes to a blank Editing Window
               button "Open Files" do
                 f_l = @folder_location
                 fixed = @fixed_files_box.text.split("\n")
