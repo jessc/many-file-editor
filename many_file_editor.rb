@@ -61,6 +61,9 @@ class ManyFileEditor
               end
             end
 
+            # bug:
+            # if Apply button is clicked, remove last .extension
+            # replace it with the new one in @file_extension
             para "Add File Extension:"
             @file_extension = edit_line
             flow do
