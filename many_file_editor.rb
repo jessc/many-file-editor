@@ -9,7 +9,6 @@
 =begin
 # bug list:
 # todo:
-- update main_window.png image
 
 =end
 
@@ -77,6 +76,22 @@ class ManyFileEditor
               end
               applied_already = false
               button "Apply" do
+
+                # placeholder code:
+                # extension = @file_extension.text
+                # box_text = @fixed_files_box.text
+                # unless extension == ""
+                #   box_text.map! do |line|
+                #     # how do you validate that a line
+                #     # ends with an extension (like .txt),
+                #     # and if it does, replace the
+                #     # extension with another?
+                #     if line.ends_with? /(\.[^.]*$)/
+                #     end
+                #   end
+                #   @fixed_files_box.text = box_text
+                # end
+
                 unless @file_extension.text == "" || applied_already
                   extension = @file_extension.text
                   old_text = @fixed_files_box.text
