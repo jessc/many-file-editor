@@ -122,6 +122,8 @@ class ManyFileEditor
                   @editing_window.show
                 end
               end
+              # bug:
+              # add Copy button too
               button "Paste" do
                 @fixed_files_box.text = self.clipboard
               end
