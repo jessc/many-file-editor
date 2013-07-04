@@ -7,8 +7,10 @@
 # https://github.com/shoes/shoes/issues/236#issuecomment-18843728
 
 =begin
-# Bug List:
-# TODO:
+# bug list:
+# todo:
+- update main_window.png image
+
 =end
 
 class ManyFileEditor
