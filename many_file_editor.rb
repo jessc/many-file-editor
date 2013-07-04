@@ -62,24 +62,30 @@ class ManyFileEditor
             end
 
             para "Add File Extension:"
-            # bug:
-            # perhaps add copy/paste buttons
             @file_extension = edit_line
-            applied_already = false
-            button "Apply" do
-              unless @file_extension.text == "" || applied_already
-                extension = @file_extension.text
-                old_text = @fixed_files_box.text
+            flow do
+              button "Copy" do
+                self.clipboard = @file_extension.text
+              end
+              button "Paste" do
+                @file_extension.text = self.clipboard
+              end
+              applied_already = false
+              button "Apply" do
+                unless @file_extension.text == "" || applied_already
+                  extension = @file_extension.text
+                  old_text = @fixed_files_box.text
 
-                # bug:
-                # use .map! here to edit lines inplace
-                replacement_text = ""
-                old_text.each_line { |line| replacement_text += line.chomp + extension + "\n" }
-                @fixed_files_box.text = replacement_text
-                # bug:
-                # when switching back to the main window from the edit window,
-                # turn applied_already back to false
-                applied_already = true
+                  # bug:
+                  # use .map! here to edit lines inplace
+                  replacement_text = ""
+                  old_text.each_line { |line| replacement_text += line.chomp + extension + "\n" }
+                  @fixed_files_box.text = replacement_text
+                  # bug:
+                  # when switching back to the main window from the edit window,
+                  # turn applied_already back to false
+                  applied_already = true
+                end
               end
             end
           end
