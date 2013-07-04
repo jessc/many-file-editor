@@ -9,6 +9,11 @@
 =begin
 # bug list:
 # todo:
+- make sure README is up to date
+- work on file extension Apply button,
+  - so it applies, then if applied again,
+  - removes last extension 
+
 
 =end
 
