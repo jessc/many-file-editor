@@ -98,6 +98,12 @@ class ManyFileEditor
             end
 
             flow do
+              button "Copy" do
+                self.clipboard = @fixed_files_box.text
+              end
+              button "Paste" do
+                @fixed_files_box.text = self.clipboard
+              end
               button "Open Files" do
                 if @fixed_files_box.text != ""
                   f_l = @folder_location
@@ -118,11 +124,6 @@ class ManyFileEditor
                   @editing_window = s.editing_window(foobar, @names_files)
                   @editing_window.show
                 end
-              end
-              # bug:
-              # add Copy button too
-              button "Paste" do
-                @fixed_files_box.text = self.clipboard
               end
             end
             button "Clear Program" do
