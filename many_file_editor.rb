@@ -98,25 +98,22 @@ class ManyFileEditor
             end
 
             flow do
-              # bug:
-              # when Open Files button is clicked without data
-              # it changes to a blank Editing Window
               button "Open Files" do
-                f_l = @folder_location
-                fixed = @fixed_files_box.text.split("\n")
-                @names_files = {}
-                @names_files[:short] = fixed
-                @names_files[:long] = fixed.map { |line| line = f_l + line }
+                if @fixed_files_box.text != ""
+                  f_l = @folder_location
+                  fixed = @fixed_files_box.text.split("\n")
+                  @names_files = {}
+                  @names_files[:short] = fixed
+                  @names_files[:long] = fixed.map { |line| line = f_l + line }
 
-                # bug:
-                # Figure out why when the @main_window is hidden,
-                # the @names_files variable becomes nil or "".
-                # One way to get around this is to pass in
-                # the variables to the window, but this seems hackish
+                  # bug:
+                  # Figure out why when the @main_window is hidden,
+                  # the @names_files variable becomes nil or "".
+                  # One way to get around this is to pass in
+                  # the variables to the window, but this seems hackish
 
-                # bug:
-                # DRY this switch_window code into a method
-                if @names_files
+                  # bug:
+                  # DRY this switch_window code into a method
                   @main_window.hide
                   @editing_window = s.editing_window(foobar, @names_files)
                   @editing_window.show
