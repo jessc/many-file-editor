@@ -8,12 +8,20 @@
 
 =begin
 # bug list:
+
+# At the bottom are methods in a class that should
+# make it easier to DRY code, because very similar code
+# can be abstracted into a method.
+# Shoes doesn't seem to be powerful enough to do it, however.
+# Since it's not, the code is here for reference of what
+# doesn't seem to work. Hopefully some use for future
+# people attempting to solve this Shoes issue.
+
 # todo:
 - make sure README is up to date
 - work on file extension Apply button,
   - so it applies, then if applied again,
   - removes last extension 
-
 
 =end
 
@@ -238,6 +246,7 @@ class ManyFileEditor
   end
 
   def switch_window(switch_to)
+    # See note at top about this not working.
     # bug:
     # When DRYing, put switching code here
     if switch_to == "main_window"
@@ -246,6 +255,7 @@ class ManyFileEditor
   end
 
   def get_file_list(long_path = false, folder_location)
+    # See note at top about this not working.
     # bug:
     # For some reason @folder_location is not being sent across methods?
     # So instead have to pass in variable and set f_l to that.
